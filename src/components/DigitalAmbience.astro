@@ -1,5 +1,5 @@
 ---
-// Digital Ambience - Minecraft-style pixel butterfly + Floating clouds with time/stats
+// Digital Ambience - Minecraft butterfly that feeds on RAM/cookies + Matrix rain idle effect
 ---
 
 <!-- Floating Clouds Container (Left Side) -->
@@ -131,10 +131,17 @@
   
   <!-- Tooltip that follows butterfly -->
   <div id="butterfly-tooltip" class="mc-tooltip">
+    <div class="tooltip-header">Digital Butterfly</div>
     <div class="tooltip-row"><span class="tooltip-label">Browser:</span> <span id="tip-browser">--</span></div>
     <div class="tooltip-row"><span class="tooltip-label">Screen:</span> <span id="tip-screen">--</span></div>
     <div class="tooltip-row"><span class="tooltip-label">OS:</span> <span id="tip-os">--</span></div>
+    <div class="tooltip-divider"></div>
+    <div class="tooltip-row"><span class="tooltip-label">RAM Used:</span> <span id="tip-ram" class="text-green-400">--</span></div>
+    <div class="tooltip-row"><span class="tooltip-label">Cookies:</span> <span id="tip-cookies" class="text-yellow-400">--</span></div>
+    <div class="tooltip-row"><span class="tooltip-label">Size:</span> <span id="tip-size" class="text-cyan-400">--</span></div>
+    <div class="tooltip-divider"></div>
     <div class="tooltip-row"><span class="tooltip-label">Visitors:</span> <span id="tip-visitors">--</span></div>
+    <div class="tooltip-footer">Feeds on RAM & Cookies</div>
   </div>
 </div>
 
@@ -146,6 +153,20 @@
     <path d="M19 11h2m-1 -1v2" />
   </svg>
 </button>
+
+<!-- Matrix Rain Effect (Neo's Screen) -->
+<div id="matrix-container" class="fixed inset-0 z-[9999] pointer-events-none opacity-0 transition-opacity duration-1000">
+  <canvas id="matrix-canvas"></canvas>
+  <div id="matrix-text" class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center opacity-0">
+    <div class="matrix-title text-green-500 text-2xl md:text-4xl font-mono mb-4">WAKE UP...</div>
+    <div class="matrix-subtitle text-green-400 text-sm md:text-lg font-mono opacity-0" style="animation-delay: 2s;">The Matrix has you...</div>
+    <div class="matrix-follow text-green-300 text-xs md:text-sm font-mono mt-4 opacity-0" style="animation-delay: 4s;">Follow the white rabbit.</div>
+    <div class="matrix-knock text-green-500 text-lg md:text-xl font-mono mt-6 opacity-0" style="animation-delay: 6s;">Knock, knock, Neo.</div>
+  </div>
+  <button id="matrix-exit" class="absolute top-4 right-4 text-green-500 font-mono text-sm hover:text-green-300 transition-colors opacity-0 pointer-events-auto">
+    [ESC] or CLICK to exit
+  </button>
+</div>
 
 <style>
   /* Minecraft color palette */
@@ -548,6 +569,100 @@
       display: none;
     }
   }
+  
+  /* ===== MATRIX RAIN EFFECT ===== */
+  #matrix-canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #000;
+  }
+  
+  #matrix-container.active {
+    opacity: 1;
+    pointer-events: auto;
+  }
+  
+  #matrix-text {
+    text-shadow: 0 0 10px #0f0, 0 0 20px #0f0, 0 0 30px #0f0;
+  }
+  
+  #matrix-container.active #matrix-text {
+    animation: matrix-text-appear 1s ease-out forwards;
+  }
+  
+  #matrix-container.active .matrix-subtitle,
+  #matrix-container.active .matrix-follow,
+  #matrix-container.active .matrix-knock {
+    animation: matrix-line-appear 1s ease-out forwards;
+  }
+  
+  #matrix-container.active #matrix-exit {
+    animation: matrix-exit-appear 1s ease-out 7s forwards;
+  }
+  
+  @keyframes matrix-text-appear {
+    0% { opacity: 0; transform: translate(-50%, -50%) scale(0.8); }
+    100% { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+  }
+  
+  @keyframes matrix-line-appear {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+  }
+  
+  @keyframes matrix-exit-appear {
+    0% { opacity: 0; }
+    100% { opacity: 0.7; }
+  }
+  
+  /* Butterfly color transition based on position */
+  #minecraft-butterfly {
+    --hue: 210;
+    filter: hue-rotate(calc(var(--hue) * 1deg));
+    transition: filter 0.5s ease, transform 0.3s ease;
+  }
+  
+  /* Butterfly breathing/pulsing based on size */
+  @keyframes butterfly-breathe {
+    0%, 100% { transform: scale(var(--butterfly-scale, 1)); }
+    50% { transform: scale(calc(var(--butterfly-scale, 1) * 1.05)); }
+  }
+  
+  .mc-butterfly {
+    animation: butterfly-breathe 2s ease-in-out infinite;
+  }
+  
+  /* Tooltip enhancements */
+  .tooltip-header {
+    font-size: 11px;
+    font-weight: bold;
+    color: #fff;
+    text-align: center;
+    margin-bottom: 4px;
+    padding-bottom: 4px;
+    border-bottom: 1px solid #5c005c;
+  }
+  
+  .tooltip-divider {
+    height: 1px;
+    background: #5c005c;
+    margin: 4px 0;
+  }
+  
+  .tooltip-footer {
+    font-size: 8px;
+    color: #888;
+    text-align: center;
+    margin-top: 4px;
+    font-style: italic;
+  }
+  
+  .text-green-400 { color: #4ade80; }
+  .text-yellow-400 { color: #facc15; }
+  .text-cyan-400 { color: #22d3ee; }
 </style>
 
 <script>
@@ -555,6 +670,11 @@
     const cloudsContainer = document.getElementById('clouds-container')
     const butterflyEl = document.getElementById('minecraft-butterfly')
     const toggleBtn = document.getElementById('toggle-ambience')
+    
+    // Matrix elements
+    const matrixContainer = document.getElementById('matrix-container')
+    const matrixCanvas = document.getElementById('matrix-canvas') as HTMLCanvasElement
+    const matrixExit = document.getElementById('matrix-exit')
     
     // Cloud elements
     const utcTime = document.getElementById('utc-time')
@@ -568,6 +688,9 @@
     const tipScreen = document.getElementById('tip-screen')
     const tipOs = document.getElementById('tip-os')
     const tipVisitors = document.getElementById('tip-visitors')
+    const tipRam = document.getElementById('tip-ram')
+    const tipCookies = document.getElementById('tip-cookies')
+    const tipSize = document.getElementById('tip-size')
     
     // Butterfly wing data
     const mcBrowser = document.getElementById('mc-browser')
@@ -579,12 +702,178 @@
     
     let sessionStart = Date.now()
     let isVisible = localStorage.getItem('hideAmbience') !== 'true'
+    let idleTimer: number | null = null
+    let matrixActive = false
+    let matrixAnimationId: number | null = null
+    let lastActivityTime = Date.now()
+    const IDLE_TIMEOUT = 11000 // 11 seconds
+    
+    // Butterfly state
+    let butterflyHue = 210
+    let butterflyScale = 1
+    let ramUsed = 0
+    let cookieCount = 0
     
     // Initialize visibility
     if (!isVisible) {
       cloudsContainer.classList.add('hidden')
       butterflyEl.classList.add('hidden')
     }
+    
+    // ===== MATRIX RAIN EFFECT =====
+    const matrixChars = 'アイウエオカキクケコサシスセソタチツテトナニヌネノハヒフヘホマミムメモヤユヨラリルレロワヲン0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ'
+    let columns: number[] = []
+    let ctx: CanvasRenderingContext2D | null = null
+    
+    const initMatrix = () => {
+      if (!matrixCanvas) return
+      ctx = matrixCanvas.getContext('2d')
+      if (!ctx) return
+      
+      matrixCanvas.width = window.innerWidth
+      matrixCanvas.height = window.innerHeight
+      
+      const fontSize = 14
+      const columnCount = Math.floor(matrixCanvas.width / fontSize)
+      columns = Array(columnCount).fill(1)
+    }
+    
+    const drawMatrix = () => {
+      if (!ctx || !matrixCanvas) return
+      
+      // Fade effect
+      ctx.fillStyle = 'rgba(0, 0, 0, 0.05)'
+      ctx.fillRect(0, 0, matrixCanvas.width, matrixCanvas.height)
+      
+      ctx.fillStyle = '#0f0'
+      ctx.font = '14px monospace'
+      
+      columns.forEach((y, i) => {
+        const char = matrixChars[Math.floor(Math.random() * matrixChars.length)]
+        const x = i * 14
+        
+        // Brighter for leading character
+        if (Math.random() > 0.98) {
+          ctx!.fillStyle = '#fff'
+        } else {
+          ctx!.fillStyle = `rgb(0, ${Math.floor(Math.random() * 155) + 100}, 0)`
+        }
+        
+        ctx!.fillText(char, x, y * 14)
+        
+        // Reset or increment
+        if (y * 14 > matrixCanvas.height && Math.random() > 0.975) {
+          columns[i] = 0
+        }
+        columns[i]++
+      })
+      
+      if (matrixActive) {
+        matrixAnimationId = requestAnimationFrame(drawMatrix)
+      }
+    }
+    
+    const startMatrix = () => {
+      if (matrixActive) return
+      matrixActive = true
+      initMatrix()
+      matrixContainer?.classList.add('active')
+      drawMatrix()
+    }
+    
+    const stopMatrix = () => {
+      matrixActive = false
+      if (matrixAnimationId) {
+        cancelAnimationFrame(matrixAnimationId)
+        matrixAnimationId = null
+      }
+      matrixContainer?.classList.remove('active')
+      resetIdleTimer()
+    }
+    
+    // Exit matrix on click or ESC
+    matrixExit?.addEventListener('click', stopMatrix)
+    matrixContainer?.addEventListener('click', stopMatrix)
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && matrixActive) {
+        stopMatrix()
+      }
+    })
+    
+    // Idle detection
+    const resetIdleTimer = () => {
+      lastActivityTime = Date.now()
+      if (idleTimer) {
+        clearTimeout(idleTimer)
+      }
+      if (!matrixActive) {
+        idleTimer = window.setTimeout(() => {
+          startMatrix()
+        }, IDLE_TIMEOUT)
+      }
+    }
+    
+    // Activity listeners
+    const activityEvents = ['mousedown', 'mousemove', 'keydown', 'scroll', 'touchstart', 'click']
+    activityEvents.forEach(event => {
+      document.addEventListener(event, () => {
+        if (!matrixActive) {
+          resetIdleTimer()
+        }
+      }, { passive: true })
+    })
+    
+    // ===== BUTTERFLY FEEDING ON RAM & COOKIES =====
+    const updateButterflySize = () => {
+      // Get RAM usage (if available)
+      const perf = (performance as any)
+      if (perf.memory) {
+        ramUsed = Math.round(perf.memory.usedJSHeapSize / (1024 * 1024))
+      } else {
+        // Estimate based on DOM size
+        ramUsed = Math.round(document.documentElement.outerHTML.length / 1024)
+      }
+      
+      // Count cookies
+      cookieCount = document.cookie ? document.cookie.split(';').length : 0
+      
+      // Calculate butterfly scale based on RAM + cookies
+      // More RAM/cookies = bigger butterfly (feeds on them)
+      const ramFactor = Math.min(ramUsed / 50, 2) // Max 2x from RAM
+      const cookieFactor = Math.min(cookieCount / 5, 1) // Max 1x from cookies
+      butterflyScale = 0.8 + (ramFactor * 0.3) + (cookieFactor * 0.2)
+      butterflyScale = Math.min(butterflyScale, 2) // Cap at 2x
+      
+      // Apply scale
+      butterflyEl.style.setProperty('--butterfly-scale', butterflyScale.toString())
+      
+      // Update tooltip
+      if (tipRam) tipRam.textContent = `${ramUsed}MB`
+      if (tipCookies) tipCookies.textContent = `${cookieCount} cookies`
+      if (tipSize) tipSize.textContent = `${Math.round(butterflyScale * 100)}%`
+    }
+    
+    // ===== BUTTERFLY COLOR CHANGE ON MOVEMENT =====
+    let lastButterflyPos = { x: 0, y: 0 }
+    
+    const updateButterflyColor = () => {
+      const rect = butterflyEl.getBoundingClientRect()
+      const x = rect.left
+      const y = rect.top
+      
+      // Calculate hue based on position (0-360)
+      const screenDiagonal = Math.sqrt(window.innerWidth ** 2 + window.innerHeight ** 2)
+      const posDiagonal = Math.sqrt(x ** 2 + y ** 2)
+      butterflyHue = (posDiagonal / screenDiagonal) * 360
+      
+      // Apply hue rotation
+      butterflyEl.style.setProperty('--hue', butterflyHue.toString())
+      
+      lastButterflyPos = { x, y }
+    }
+    
+    // Track butterfly position and update color
+    const butterflyColorInterval = setInterval(updateButterflyColor, 100)
     
     // Toggle handler
     toggleBtn?.addEventListener('click', () => {
@@ -727,7 +1016,12 @@
     }
     
     // Update screen size on resize
-    window.addEventListener('resize', getScreenInfo)
+    window.addEventListener('resize', () => {
+      getScreenInfo()
+      if (matrixActive) {
+        initMatrix()
+      }
+    })
     
     // Initialize
     if (isVisible) {
@@ -738,9 +1032,16 @@
     getScreenInfo()
     getOSInfo()
     getVisitorCount()
+    updateButterflySize()
     updateTime()
+    
+    // Start idle timer
+    resetIdleTimer()
     
     // Update time every second
     setInterval(updateTime, 1000)
+    
+    // Update butterfly size periodically (feeding)
+    setInterval(updateButterflySize, 5000)
   })
 </script>
