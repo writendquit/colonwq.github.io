@@ -1,5 +1,5 @@
 ---
-// Digital Ambience - Butterflies with transparent data wings + Floating clouds with time/stats
+// Digital Ambience - Minecraft-style pixel butterfly + Floating clouds with time/stats
 ---
 
 <!-- Floating Clouds Container (Left Side) -->
@@ -44,106 +44,97 @@
   </div>
 </div>
 
-<!-- Digital Butterflies Container (Right Side) -->
-<div id="butterflies-container" class="fixed right-0 bottom-0 z-40 pointer-events-none overflow-hidden" style="width: 300px; height: 400px;">
-  <!-- Butterfly 1 - Browser Info -->
-  <div id="butterfly-1" class="butterfly" style="right: 50px; bottom: 100px;">
-    <div class="butterfly-body">
-      <div class="wing wing-left">
-        <div class="wing-glass">
-          <div class="wing-data">
-            <span class="data-label">BROWSER</span>
-            <span id="browser-name" class="data-value">--</span>
-          </div>
+<!-- Single Minecraft-Style Pixel Butterfly -->
+<div id="minecraft-butterfly" class="fixed z-40 pointer-events-none" style="bottom: 100px; right: 100px;">
+  <div class="mc-butterfly">
+    <!-- Left Wing with Data -->
+    <div class="mc-wing mc-wing-left">
+      <div class="wing-pixels">
+        <div class="pixel-row">
+          <div class="pixel" style="background: var(--wing-color-1);"></div>
+          <div class="pixel" style="background: var(--wing-color-2);"></div>
+        </div>
+        <div class="pixel-row">
+          <div class="pixel" style="background: var(--wing-color-2);"></div>
+          <div class="pixel" style="background: var(--wing-color-1);"></div>
+          <div class="pixel" style="background: var(--wing-color-2);"></div>
+        </div>
+        <div class="pixel-row">
+          <div class="pixel" style="background: var(--wing-color-1);"></div>
+          <div class="pixel" style="background: var(--wing-color-3);"></div>
+          <div class="pixel" style="background: var(--wing-color-1);"></div>
+          <div class="pixel" style="background: var(--wing-color-2);"></div>
+        </div>
+        <div class="pixel-row">
+          <div class="pixel" style="background: var(--wing-color-2);"></div>
+          <div class="pixel" style="background: var(--wing-color-1);"></div>
+          <div class="pixel" style="background: var(--wing-color-2);"></div>
+        </div>
+        <div class="pixel-row">
+          <div class="pixel" style="background: var(--wing-color-1);"></div>
+          <div class="pixel" style="background: var(--wing-color-2);"></div>
         </div>
       </div>
-      <div class="wing wing-right">
-        <div class="wing-glass">
-          <div class="wing-data">
-            <span class="data-label">VERSION</span>
-            <span id="browser-version" class="data-value">--</span>
-          </div>
+      <!-- Data overlay on wing -->
+      <div class="wing-data-overlay">
+        <span id="mc-browser" class="mc-data">--</span>
+        <span id="mc-screen" class="mc-data">--</span>
+      </div>
+    </div>
+    
+    <!-- Body (Pixelated) -->
+    <div class="mc-body">
+      <div class="body-pixel"></div>
+      <div class="body-pixel"></div>
+      <div class="body-pixel"></div>
+      <div class="body-pixel head"></div>
+      <!-- Antennae -->
+      <div class="mc-antenna mc-antenna-left"></div>
+      <div class="mc-antenna mc-antenna-right"></div>
+    </div>
+    
+    <!-- Right Wing with Data -->
+    <div class="mc-wing mc-wing-right">
+      <div class="wing-pixels">
+        <div class="pixel-row">
+          <div class="pixel" style="background: var(--wing-color-2);"></div>
+          <div class="pixel" style="background: var(--wing-color-1);"></div>
+        </div>
+        <div class="pixel-row">
+          <div class="pixel" style="background: var(--wing-color-2);"></div>
+          <div class="pixel" style="background: var(--wing-color-1);"></div>
+          <div class="pixel" style="background: var(--wing-color-2);"></div>
+        </div>
+        <div class="pixel-row">
+          <div class="pixel" style="background: var(--wing-color-2);"></div>
+          <div class="pixel" style="background: var(--wing-color-1);"></div>
+          <div class="pixel" style="background: var(--wing-color-3);"></div>
+          <div class="pixel" style="background: var(--wing-color-1);"></div>
+        </div>
+        <div class="pixel-row">
+          <div class="pixel" style="background: var(--wing-color-2);"></div>
+          <div class="pixel" style="background: var(--wing-color-1);"></div>
+          <div class="pixel" style="background: var(--wing-color-2);"></div>
+        </div>
+        <div class="pixel-row">
+          <div class="pixel" style="background: var(--wing-color-2);"></div>
+          <div class="pixel" style="background: var(--wing-color-1);"></div>
         </div>
       </div>
-      <div class="body-segment"></div>
-      <div class="antenna antenna-left"></div>
-      <div class="antenna antenna-right"></div>
+      <!-- Data overlay on wing -->
+      <div class="wing-data-overlay">
+        <span id="mc-os" class="mc-data">--</span>
+        <span id="mc-visitors" class="mc-data">--</span>
+      </div>
     </div>
   </div>
   
-  <!-- Butterfly 2 - Screen Info -->
-  <div id="butterfly-2" class="butterfly" style="right: 120px; bottom: 200px;">
-    <div class="butterfly-body">
-      <div class="wing wing-left">
-        <div class="wing-glass">
-          <div class="wing-data">
-            <span class="data-label">WIDTH</span>
-            <span id="screen-width" class="data-value">--</span>
-          </div>
-        </div>
-      </div>
-      <div class="wing wing-right">
-        <div class="wing-glass">
-          <div class="wing-data">
-            <span class="data-label">HEIGHT</span>
-            <span id="screen-height" class="data-value">--</span>
-          </div>
-        </div>
-      </div>
-      <div class="body-segment"></div>
-      <div class="antenna antenna-left"></div>
-      <div class="antenna antenna-right"></div>
-    </div>
-  </div>
-  
-  <!-- Butterfly 3 - OS Info -->
-  <div id="butterfly-3" class="butterfly" style="right: 30px; bottom: 280px;">
-    <div class="butterfly-body">
-      <div class="wing wing-left">
-        <div class="wing-glass">
-          <div class="wing-data">
-            <span class="data-label">OS</span>
-            <span id="os-name" class="data-value">--</span>
-          </div>
-        </div>
-      </div>
-      <div class="wing wing-right">
-        <div class="wing-glass">
-          <div class="wing-data">
-            <span class="data-label">DEVICE</span>
-            <span id="device-type" class="data-value">--</span>
-          </div>
-        </div>
-      </div>
-      <div class="body-segment"></div>
-      <div class="antenna antenna-left"></div>
-      <div class="antenna antenna-right"></div>
-    </div>
-  </div>
-  
-  <!-- Butterfly 4 - Visitor Stats -->
-  <div id="butterfly-4" class="butterfly" style="right: 150px; bottom: 50px;">
-    <div class="butterfly-body">
-      <div class="wing wing-left">
-        <div class="wing-glass">
-          <div class="wing-data">
-            <span class="data-label">VISITORS</span>
-            <span id="visitor-total" class="data-value">--</span>
-          </div>
-        </div>
-      </div>
-      <div class="wing wing-right">
-        <div class="wing-glass">
-          <div class="wing-data">
-            <span class="data-label">ONLINE</span>
-            <span id="visitors-online" class="data-value">1</span>
-          </div>
-        </div>
-      </div>
-      <div class="body-segment"></div>
-      <div class="antenna antenna-left"></div>
-      <div class="antenna antenna-right"></div>
-    </div>
+  <!-- Tooltip that follows butterfly -->
+  <div id="butterfly-tooltip" class="mc-tooltip">
+    <div class="tooltip-row"><span class="tooltip-label">Browser:</span> <span id="tip-browser">--</span></div>
+    <div class="tooltip-row"><span class="tooltip-label">Screen:</span> <span id="tip-screen">--</span></div>
+    <div class="tooltip-row"><span class="tooltip-label">OS:</span> <span id="tip-os">--</span></div>
+    <div class="tooltip-row"><span class="tooltip-label">Visitors:</span> <span id="tip-visitors">--</span></div>
   </div>
 </div>
 
@@ -157,6 +148,14 @@
 </button>
 
 <style>
+  /* Minecraft color palette */
+  :root {
+    --wing-color-1: rgba(138, 180, 248, 0.7);
+    --wing-color-2: rgba(100, 149, 237, 0.5);
+    --wing-color-3: rgba(255, 255, 255, 0.8);
+    --pixel-size: 6px;
+  }
+  
   /* Cloud Styles */
   .cloud {
     position: absolute;
@@ -257,213 +256,276 @@
     75% { transform: translateX(-3px) translateY(-2px); }
   }
   
-  /* Butterfly Styles */
-  .butterfly {
-    position: absolute;
-    width: 100px;
-    height: 60px;
-    cursor: pointer;
+  /* ===== MINECRAFT BUTTERFLY ===== */
+  #minecraft-butterfly {
+    transition: all 0.1s linear;
+    image-rendering: pixelated;
     pointer-events: auto;
-    transition: all 0.3s ease;
+    cursor: pointer;
   }
   
-  .butterfly:hover {
-    transform: scale(1.1);
-  }
-  
-  .butterfly-body {
-    position: relative;
-    width: 100%;
-    height: 100%;
+  .mc-butterfly {
     display: flex;
     align-items: center;
     justify-content: center;
-  }
-  
-  .body-segment {
-    position: absolute;
-    width: 6px;
-    height: 25px;
-    background: linear-gradient(180deg, var(--foreground) 0%, rgba(var(--foreground-rgb), 0.6) 100%);
-    border-radius: 3px;
-    z-index: 10;
-  }
-  
-  .antenna {
-    position: absolute;
-    width: 1px;
-    height: 12px;
-    background: var(--foreground);
-    top: 8px;
-    transform-origin: bottom;
-  }
-  
-  .antenna-left {
-    left: calc(50% - 4px);
-    transform: rotate(-25deg);
-  }
-  
-  .antenna-right {
-    right: calc(50% - 4px);
-    transform: rotate(25deg);
-  }
-  
-  .antenna::after {
-    content: '';
-    position: absolute;
-    top: -3px;
-    left: -1.5px;
-    width: 4px;
-    height: 4px;
-    background: var(--foreground);
-    border-radius: 50%;
-  }
-  
-  /* Wing Styles - Glassmorphism */
-  .wing {
-    position: absolute;
-    width: 45px;
-    height: 55px;
-    transform-origin: center right;
-    animation: flap 0.4s ease-in-out infinite;
-  }
-  
-  .wing-left {
-    right: 50%;
-    transform-origin: right center;
-    animation-name: flap-left;
-  }
-  
-  .wing-right {
-    left: 50%;
-    transform-origin: left center;
-    animation-name: flap-right;
-  }
-  
-  .wing-glass {
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(
-      135deg, 
-      rgba(255,255,255,0.15) 0%, 
-      rgba(255,255,255,0.05) 50%,
-      rgba(255,255,255,0.1) 100%
-    );
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
-    border: 1px solid rgba(255,255,255,0.2);
-    border-radius: 50% 50% 50% 10%;
-    box-shadow: 
-      0 4px 16px rgba(0,0,0,0.1),
-      inset 0 1px 0 rgba(255,255,255,0.3),
-      inset 0 -1px 0 rgba(0,0,0,0.1);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    overflow: hidden;
     position: relative;
+    transform-style: preserve-3d;
+    perspective: 200px;
   }
   
-  .wing-left .wing-glass {
-    border-radius: 50% 10% 50% 50%;
-  }
-  
-  .wing-right .wing-glass {
-    border-radius: 10% 50% 50% 50%;
-  }
-  
-  /* Wing shimmer effect */
-  .wing-glass::before {
-    content: '';
-    position: absolute;
-    top: -50%;
-    left: -50%;
-    width: 200%;
-    height: 200%;
-    background: linear-gradient(
-      45deg,
-      transparent 40%,
-      rgba(255,255,255,0.3) 50%,
-      transparent 60%
-    );
-    animation: shimmer 3s ease-in-out infinite;
-  }
-  
-  @keyframes shimmer {
-    0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
-    100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
-  }
-  
-  .wing-data {
+  /* Pixelated Body */
+  .mc-body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
-    text-align: center;
-    padding: 4px;
-    z-index: 1;
+    z-index: 10;
+    position: relative;
   }
   
-  .data-label {
+  .body-pixel {
+    width: var(--pixel-size);
+    height: var(--pixel-size);
+    background: #1a1a1a;
+    box-shadow: 
+      inset 1px 1px 0 rgba(255,255,255,0.2),
+      inset -1px -1px 0 rgba(0,0,0,0.3);
+  }
+  
+  .body-pixel.head {
+    width: calc(var(--pixel-size) * 1.2);
+    height: calc(var(--pixel-size) * 1.2);
+    border-radius: 1px;
+  }
+  
+  /* Pixelated Antennae */
+  .mc-antenna {
+    position: absolute;
+    width: 2px;
+    height: 10px;
+    background: #1a1a1a;
+    top: -8px;
+  }
+  
+  .mc-antenna-left {
+    left: -3px;
+    transform: rotate(-30deg);
+  }
+  
+  .mc-antenna-right {
+    right: -3px;
+    transform: rotate(30deg);
+  }
+  
+  .mc-antenna::after {
+    content: '';
+    position: absolute;
+    top: -3px;
+    left: -1px;
+    width: 4px;
+    height: 4px;
+    background: #1a1a1a;
+  }
+  
+  /* Pixel Wings */
+  .mc-wing {
+    position: relative;
+    transform-origin: center;
+    transform-style: preserve-3d;
+  }
+  
+  .mc-wing-left {
+    transform-origin: right center;
+    animation: mc-flap-left 0.3s ease-in-out infinite;
+  }
+  
+  .mc-wing-right {
+    transform-origin: left center;
+    animation: mc-flap-right 0.3s ease-in-out infinite;
+  }
+  
+  .wing-pixels {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+  }
+  
+  .mc-wing-right .wing-pixels {
+    align-items: flex-start;
+  }
+  
+  .pixel-row {
+    display: flex;
+  }
+  
+  .mc-wing-left .pixel-row {
+    justify-content: flex-end;
+  }
+  
+  .pixel {
+    width: var(--pixel-size);
+    height: var(--pixel-size);
+    box-shadow: 
+      inset 1px 1px 0 rgba(255,255,255,0.4),
+      inset -1px -1px 0 rgba(0,0,0,0.2);
+    image-rendering: pixelated;
+  }
+  
+  /* Wing data overlay - glassmorphism on wings */
+  .wing-data-overlay {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2px;
+    opacity: 0;
+    transition: opacity 0.2s;
+    pointer-events: none;
+  }
+  
+  .mc-data {
     font-size: 6px;
-    font-weight: 600;
-    letter-spacing: 0.1em;
-    color: var(--foreground);
-    opacity: 0.6;
+    font-family: 'Courier New', monospace;
+    color: #fff;
+    text-shadow: 1px 1px 0 #000;
+    white-space: nowrap;
   }
   
-  .data-value {
-    font-size: 9px;
-    font-weight: 700;
-    color: var(--foreground);
-    font-family: ui-monospace, monospace;
+  /* Minecraft-style flapping */
+  @keyframes mc-flap-left {
+    0%, 100% { transform: rotateY(0deg) rotateX(5deg); }
+    50% { transform: rotateY(70deg) rotateX(-10deg); }
   }
   
-  /* Wing flapping animation */
-  @keyframes flap-left {
-    0%, 100% { transform: rotateY(0deg) rotateZ(-5deg); }
-    50% { transform: rotateY(50deg) rotateZ(5deg); }
+  @keyframes mc-flap-right {
+    0%, 100% { transform: rotateY(0deg) rotateX(5deg); }
+    50% { transform: rotateY(-70deg) rotateX(-10deg); }
   }
   
-  @keyframes flap-right {
-    0%, 100% { transform: rotateY(0deg) rotateZ(5deg); }
-    50% { transform: rotateY(-50deg) rotateZ(-5deg); }
+  /* Tooltip - Minecraft style */
+  .mc-tooltip {
+    position: absolute;
+    top: -80px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(16, 0, 16, 0.94);
+    border: 2px solid #5c005c;
+    padding: 6px 10px;
+    font-family: 'Courier New', monospace;
+    font-size: 10px;
+    color: #fff;
+    white-space: nowrap;
+    opacity: 0;
+    transition: opacity 0.2s;
+    pointer-events: none;
+    box-shadow: 
+      inset 0 0 0 1px rgba(255,255,255,0.1),
+      0 4px 12px rgba(0,0,0,0.5);
   }
   
-  /* Butterfly floating movement */
-  .butterfly {
-    animation: butterfly-float 8s ease-in-out infinite;
+  .mc-tooltip::before {
+    content: '';
+    position: absolute;
+    bottom: -6px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-left: 6px solid transparent;
+    border-right: 6px solid transparent;
+    border-top: 6px solid #5c005c;
   }
   
-  #butterfly-1 { animation-delay: 0s; }
-  #butterfly-2 { animation-delay: 2s; }
-  #butterfly-3 { animation-delay: 4s; }
-  #butterfly-4 { animation-delay: 6s; }
+  #minecraft-butterfly:hover .mc-tooltip {
+    opacity: 1;
+  }
   
-  @keyframes butterfly-float {
-    0%, 100% { 
-      transform: translate(0, 0) rotate(0deg); 
+  .tooltip-row {
+    display: flex;
+    gap: 6px;
+    line-height: 1.4;
+  }
+  
+  .tooltip-label {
+    color: #aaa;
+  }
+  
+  /* Butterfly flying around the screen */
+  #minecraft-butterfly {
+    animation: mc-fly 20s ease-in-out infinite;
+  }
+  
+  @keyframes mc-fly {
+    0% { 
+      bottom: 100px; 
+      right: 100px; 
+      transform: rotate(0deg);
     }
-    25% { 
-      transform: translate(15px, -20px) rotate(5deg); 
+    10% { 
+      bottom: 200px; 
+      right: 150px; 
+      transform: rotate(-5deg);
+    }
+    20% { 
+      bottom: 300px; 
+      right: 80px; 
+      transform: rotate(8deg);
+    }
+    30% { 
+      bottom: 250px; 
+      right: 200px; 
+      transform: rotate(-3deg);
+    }
+    40% { 
+      bottom: 400px; 
+      right: 120px; 
+      transform: rotate(10deg);
     }
     50% { 
-      transform: translate(-10px, -35px) rotate(-3deg); 
+      bottom: 350px; 
+      right: 250px; 
+      transform: rotate(-8deg);
     }
-    75% { 
-      transform: translate(20px, -15px) rotate(4deg); 
+    60% { 
+      bottom: 200px; 
+      right: 300px; 
+      transform: rotate(5deg);
+    }
+    70% { 
+      bottom: 150px; 
+      right: 180px; 
+      transform: rotate(-10deg);
+    }
+    80% { 
+      bottom: 250px; 
+      right: 50px; 
+      transform: rotate(3deg);
+    }
+    90% { 
+      bottom: 180px; 
+      right: 120px; 
+      transform: rotate(-5deg);
+    }
+    100% { 
+      bottom: 100px; 
+      right: 100px; 
+      transform: rotate(0deg);
     }
   }
   
-  /* Hover pause animation */
-  .butterfly:hover,
-  .butterfly:hover .wing {
+  /* Pause on hover */
+  #minecraft-butterfly:hover {
+    animation-play-state: paused;
+  }
+  
+  #minecraft-butterfly:hover .mc-wing-left,
+  #minecraft-butterfly:hover .mc-wing-right {
     animation-play-state: paused;
   }
   
   /* Hidden state */
   #clouds-container.hidden,
-  #butterflies-container.hidden {
+  #minecraft-butterfly.hidden {
     opacity: 0;
     pointer-events: none;
     transition: opacity 0.5s ease;
@@ -471,8 +533,8 @@
   
   /* Responsive */
   @media (max-width: 768px) {
-    #butterflies-container {
-      display: none;
+    #minecraft-butterfly {
+      transform: scale(0.8);
     }
     
     #clouds-container {
@@ -480,29 +542,40 @@
       transform-origin: top left;
     }
   }
+  
+  @media (max-width: 480px) {
+    #minecraft-butterfly {
+      display: none;
+    }
+  }
 </style>
 
 <script>
   document.addEventListener('astro:page-load', () => {
     const cloudsContainer = document.getElementById('clouds-container')
-    const butterfliesContainer = document.getElementById('butterflies-container')
+    const butterflyEl = document.getElementById('minecraft-butterfly')
     const toggleBtn = document.getElementById('toggle-ambience')
     
-    // Elements
+    // Cloud elements
     const utcTime = document.getElementById('utc-time')
     const utcDate = document.getElementById('utc-date')
     const localTime = document.getElementById('local-time')
     const localZone = document.getElementById('local-zone')
     const uptime = document.getElementById('uptime')
-    const browserName = document.getElementById('browser-name')
-    const browserVersion = document.getElementById('browser-version')
-    const screenWidth = document.getElementById('screen-width')
-    const screenHeight = document.getElementById('screen-height')
-    const osName = document.getElementById('os-name')
-    const deviceType = document.getElementById('device-type')
-    const visitorTotal = document.getElementById('visitor-total')
     
-    if (!cloudsContainer || !butterfliesContainer) return
+    // Butterfly tooltip elements
+    const tipBrowser = document.getElementById('tip-browser')
+    const tipScreen = document.getElementById('tip-screen')
+    const tipOs = document.getElementById('tip-os')
+    const tipVisitors = document.getElementById('tip-visitors')
+    
+    // Butterfly wing data
+    const mcBrowser = document.getElementById('mc-browser')
+    const mcScreen = document.getElementById('mc-screen')
+    const mcOs = document.getElementById('mc-os')
+    const mcVisitors = document.getElementById('mc-visitors')
+    
+    if (!cloudsContainer || !butterflyEl) return
     
     let sessionStart = Date.now()
     let isVisible = localStorage.getItem('hideAmbience') !== 'true'
@@ -510,7 +583,7 @@
     // Initialize visibility
     if (!isVisible) {
       cloudsContainer.classList.add('hidden')
-      butterfliesContainer.classList.add('hidden')
+      butterflyEl.classList.add('hidden')
     }
     
     // Toggle handler
@@ -520,11 +593,11 @@
       
       if (isVisible) {
         cloudsContainer.classList.remove('hidden')
-        butterfliesContainer.classList.remove('hidden')
+        butterflyEl.classList.remove('hidden')
         showClouds()
       } else {
         cloudsContainer.classList.add('hidden')
-        butterfliesContainer.classList.add('hidden')
+        butterflyEl.classList.add('hidden')
       }
     })
     
@@ -596,14 +669,20 @@
         version = ua.split('OPR/')[1]?.split(' ')[0] || ''
       }
       
-      if (browserName) browserName.textContent = browser
-      if (browserVersion) browserVersion.textContent = version.split('.')[0] || '--'
+      const browserText = `${browser} ${version.split('.')[0]}`
+      if (tipBrowser) tipBrowser.textContent = browserText
+      if (mcBrowser) mcBrowser.textContent = browser
+      
+      return browserText
     }
     
     // Get screen info
     const getScreenInfo = () => {
-      if (screenWidth) screenWidth.textContent = `${window.innerWidth}px`
-      if (screenHeight) screenHeight.textContent = `${window.innerHeight}px`
+      const screenText = `${window.innerWidth}x${window.innerHeight}`
+      if (tipScreen) tipScreen.textContent = screenText
+      if (mcScreen) mcScreen.textContent = screenText
+      
+      return screenText
     }
     
     // Get OS info
@@ -621,8 +700,11 @@
         device = ua.includes('iPad') ? 'Tablet' : 'Mobile'
       }
       
-      if (osName) osName.textContent = os
-      if (deviceType) deviceType.textContent = device
+      const osText = `${os} (${device})`
+      if (tipOs) tipOs.textContent = osText
+      if (mcOs) mcOs.textContent = os
+      
+      return osText
     }
     
     // Get visitor count
@@ -637,7 +719,11 @@
         sessionStorage.setItem(sessionKey, '1')
       }
       
-      if (visitorTotal) visitorTotal.textContent = (count + 389).toString()
+      const visitorCount = count + 389
+      if (tipVisitors) tipVisitors.textContent = visitorCount.toString()
+      if (mcVisitors) mcVisitors.textContent = visitorCount.toString()
+      
+      return visitorCount
     }
     
     // Update screen size on resize
