@@ -157,8 +157,8 @@
 <!-- Neo's Screen - Exact Movie Recreation -->
 <div id="matrix-container" class="fixed inset-0 z-[9999] pointer-events-none opacity-0">
   
-  <!-- Phase 1: 1999 Browser Search - FULLSCREEN like the movie -->
-  <div id="browser-phase" class="absolute inset-0 bg-[#4a5568]">
+  <!-- Phase 1: 1999 Browser Search - FULLSCREEN CINEMATIC -->
+  <div id="browser-phase" class="absolute inset-0 bg-[#1a1a1a]">
     <div class="browser-1999">
       <!-- 1999 Toolbar - Big square icons -->
       <div class="toolbar-1999">
@@ -174,18 +174,42 @@
         <div class="download-btn-1999">Download</div>
       </div>
       
-      <!-- Big Green Search Bar - Full Width -->
+      <!-- Search Bar with Rotating Globe -->
       <div class="searchbar-1999">
-        <span class="search-label">Searching...</span>
+        <div class="globe-icon">🌐</div>
+        <span class="search-label">Searching worldwide...</span>
+        <div class="search-status" id="search-status">Connecting to global database</div>
       </div>
       
-      <!-- Content: Newspaper + Dark Morpheus Silhouette -->
+      <!-- Full Content Area: Ticker + Newspaper + Morpheus -->
       <div class="content-1999">
-        <div class="newspaper-1999" id="article-area">
-          <!-- Articles cycle here -->
+        <!-- Scrolling News Ticker -->
+        <div class="news-ticker">
+          <div class="ticker-content">
+            ⚠ BREAKING: International manhunt continues for cyber terrorist known as "MORPHEUS" ▪ FBI issues GLOBAL ALERT ▪ INTERPOL coordinates 47 nations ▪ Suspect last seen in TOKYO, LONDON, NEW YORK ▪ $10 MILLION REWARD ▪ CLASSIFIED documents accessed ▪ Government systems compromised WORLDWIDE ▪ ALL AGENCIES ON HIGH ALERT ▪ CYBER THREAT LEVEL: CRITICAL ▪
+          </div>
         </div>
-        <div class="morpheus-area-1999">
-          <div class="morpheus-silhouette-1999"></div>
+        
+        <!-- Main Row: Newspaper + Morpheus -->
+        <div class="newspaper-row">
+          <!-- Newspaper Area -->
+          <div class="newspaper-1999" id="article-area">
+            <!-- Articles cycle here -->
+          </div>
+          
+          <!-- Morpheus Photo - Black & White Surveillance -->
+          <div class="morpheus-area-1999">
+            <div class="morpheus-label">⚠ SUSPECT ⚠</div>
+            <div class="morpheus-photo-frame">
+              <div class="morpheus-image-bw"></div>
+              <div class="photo-scanlines"></div>
+            </div>
+            <div class="morpheus-caption">
+              <div>▸ ALIAS: MORPHEUS</div>
+              <div>▸ STATUS: <span style="color:#ff0000">WANTED</span></div>
+              <div>▸ THREAT: <span style="color:#ff0000">EXTREME</span></div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -653,35 +677,95 @@
     color: #000;
   }
   
-  /* Big Green Search Bar - FULL WIDTH like movie */
+  /* Search Bar with Globe - FULL WIDTH */
   .searchbar-1999 {
-    background: #004d00;
-    padding: 10px 20px;
-    border: 3px inset #003300;
-    margin: 0;
+    background: linear-gradient(180deg, #004d00 0%, #003300 100%);
+    padding: 12px 20px;
+    border-top: 2px solid #006600;
+    border-bottom: 3px solid #001a00;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+  }
+  
+  .globe-icon {
+    font-size: 28px;
+    animation: globe-spin 3s linear infinite;
+    filter: hue-rotate(80deg) saturate(2);
+  }
+  
+  @keyframes globe-spin {
+    0% { transform: rotateY(0deg); }
+    100% { transform: rotateY(360deg); }
   }
   
   .search-label {
     color: #00ff00;
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 18px;
+    font-family: 'Courier New', monospace;
+    font-size: 20px;
     font-weight: bold;
-    letter-spacing: 2px;
-    text-shadow: 0 0 5px #00ff00;
+    letter-spacing: 3px;
+    text-shadow: 0 0 10px #00ff00, 0 0 20px #00ff00;
+    animation: search-pulse 1.5s ease-in-out infinite;
+  }
+  
+  @keyframes search-pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.7; }
+  }
+  
+  .search-status {
+    color: #00cc00;
+    font-family: 'Courier New', monospace;
+    font-size: 12px;
+    margin-left: auto;
+    letter-spacing: 1px;
   }
   
   /* Main Content Area */
   .content-1999 {
     flex: 1;
     display: flex;
-    background: #d4d0c0;
+    flex-direction: column;
+    background: #1a1a1a;
     overflow: hidden;
   }
   
-  /* Newspaper - Scanned/aged look */
+  /* Breaking News Ticker */
+  .news-ticker {
+    background: #cc0000;
+    padding: 8px 0;
+    overflow: hidden;
+    border-bottom: 2px solid #990000;
+  }
+  
+  .ticker-content {
+    color: #fff;
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+    font-weight: bold;
+    white-space: nowrap;
+    animation: ticker-scroll 20s linear infinite;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+  
+  @keyframes ticker-scroll {
+    0% { transform: translateX(100%); }
+    100% { transform: translateX(-100%); }
+  }
+  
+  /* Main Row: Newspaper + Morpheus */
+  .newspaper-row {
+    flex: 1;
+    display: flex;
+    overflow: hidden;
+  }
+  
+  /* Newspaper - Scanned/aged look FULLSCREEN */
   .newspaper-1999 {
     flex: 1;
-    padding: 15px 20px;
+    padding: 20px 25px;
     overflow: hidden;
     font-family: 'Times New Roman', Georgia, serif;
     color: #1a1a1a;
@@ -691,9 +775,15 @@
         0deg,
         transparent,
         transparent 1px,
-        rgba(0,0,0,0.03) 1px,
-        rgba(0,0,0,0.03) 2px
+        rgba(0,0,0,0.02) 1px,
+        rgba(0,0,0,0.02) 2px
       );
+    animation: paper-slide 0.5s ease-out;
+  }
+  
+  @keyframes paper-slide {
+    0% { transform: translateY(20px); opacity: 0; }
+    100% { transform: translateY(0); opacity: 1; }
   }
   
   /* Newspaper Headlines */
@@ -751,41 +841,94 @@
     font-weight: bold;
   }
   
-  /* Morpheus Silhouette - Dark grainy like surveillance photo */
+  /* Morpheus Photo Area - Wanted Poster Style */
   .morpheus-area-1999 {
-    width: 260px;
-    min-width: 260px;
+    width: 280px;
+    min-width: 280px;
     background: #0a0a0a;
     display: flex;
-    align-items: flex-start;
-    justify-content: center;
-    padding: 20px 15px;
-    border-left: 2px solid #666;
+    flex-direction: column;
+    align-items: center;
+    padding: 15px;
+    border-left: 3px solid #333;
   }
   
-  .morpheus-silhouette-1999 {
-    width: 220px;
-    height: 320px;
-    background: 
-      radial-gradient(ellipse 80% 50% at 50% 25%, #1a1a1a 0%, #000 60%),
-      radial-gradient(ellipse 60% 30% at 50% 75%, #111 0%, #000 50%);
-    border-radius: 45% 45% 42% 42% / 35% 35% 25% 25%;
+  .morpheus-label {
+    color: #ff0000;
+    font-family: 'Impact', 'Arial Black', sans-serif;
+    font-size: 24px;
+    font-weight: bold;
+    letter-spacing: 8px;
+    text-align: center;
+    margin-bottom: 10px;
+    text-shadow: 0 0 10px #ff0000;
+    animation: label-flash 2s ease-in-out infinite;
+  }
+  
+  @keyframes label-flash {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.6; }
+  }
+  
+  .morpheus-photo-frame {
+    width: 240px;
+    height: 300px;
+    background: #111;
+    border: 4px solid #333;
     position: relative;
-    filter: blur(1px) contrast(1.5);
-    opacity: 0.9;
+    overflow: hidden;
+    box-shadow: 0 0 20px rgba(0,0,0,0.8);
   }
   
-  /* Grainy noise effect */
-  .morpheus-silhouette-1999::before {
-    content: '';
+  .morpheus-image-bw {
+    width: 100%;
+    height: 100%;
+    background: 
+      /* Face shape */
+      radial-gradient(ellipse 70% 45% at 50% 35%, #2a2a2a 0%, #1a1a1a 40%, #0a0a0a 70%),
+      /* Head */
+      radial-gradient(ellipse 60% 50% at 50% 30%, #252525 0%, #151515 50%, #000 80%),
+      /* Shoulders */
+      radial-gradient(ellipse 90% 40% at 50% 90%, #1a1a1a 0%, #0a0a0a 60%),
+      /* Sunglasses hint */
+      linear-gradient(180deg, transparent 28%, #111 29%, #111 32%, transparent 33%);
+    filter: contrast(1.4) brightness(0.8);
+  }
+  
+  .photo-scanlines {
     position: absolute;
     top: 0;
     left: 0;
     right: 0;
     bottom: 0;
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%' height='100%' filter='url(%23noise)'/%3E%3C/svg%3E");
-    opacity: 0.15;
-    mix-blend-mode: overlay;
+    background: repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 2px,
+      rgba(0,0,0,0.3) 2px,
+      rgba(0,0,0,0.3) 4px
+    );
+    pointer-events: none;
+    animation: scanline-move 0.1s linear infinite;
+  }
+  
+  @keyframes scanline-move {
+    0% { transform: translateY(0); }
+    100% { transform: translateY(4px); }
+  }
+  
+  .morpheus-caption {
+    color: #00ff00;
+    font-family: 'Courier New', monospace;
+    font-size: 11px;
+    text-align: center;
+    margin-top: 12px;
+    line-height: 1.6;
+    letter-spacing: 1px;
+  }
+  
+  .morpheus-caption div {
+    margin: 2px 0;
   }
   
   /* Phase 2: Terminal Messages */
@@ -1025,9 +1168,32 @@ One local policeman was also present at Heathrow Airport for comments. "I have b
     let charIndex = 0
     let currentPhase: 'browser' | 'transition' | 'terminal' = 'browser'
     
+    // Search status messages
+    const searchStatuses = [
+      'Connecting to global database...',
+      'Scanning INTERPOL records...',
+      'Accessing FBI mainframe...',
+      'Searching CIA archives...',
+      'Querying MI6 database...',
+      'Checking Mossad files...',
+      'Scanning FSB records...',
+      'Cross-referencing data...',
+      'Match found: MORPHEUS'
+    ]
+    let statusIndex = 0
+    const searchStatus = document.getElementById('search-status')
+    
+    const updateSearchStatus = () => {
+      if (!matrixActive || !searchStatus) return
+      searchStatus.textContent = searchStatuses[statusIndex % searchStatuses.length]
+      statusIndex++
+    }
+    
     // Show article in browser
     const showArticle = () => {
       if (!matrixActive || !articleArea) return
+      
+      updateSearchStatus()
       
       const article = articles[articleIndex]
       
@@ -1042,10 +1208,10 @@ One local policeman was also present at Heathrow Airport for comments. "I have b
       
       if (articleIndex < articles.length) {
         // Show next article after delay
-        screenTimeout = window.setTimeout(showArticle, 1800)
+        screenTimeout = window.setTimeout(showArticle, 1500)
       } else {
         // All articles shown, transition to terminal
-        screenTimeout = window.setTimeout(startTerminalPhase, 2000)
+        screenTimeout = window.setTimeout(startTerminalPhase, 1800)
       }
     }
     
