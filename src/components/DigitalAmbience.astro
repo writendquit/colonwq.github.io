@@ -1,0 +1,660 @@
+---
+// Digital Ambience - Butterflies with transparent data wings + Floating clouds with time/stats
+---
+
+<!-- Floating Clouds Container (Left Side) -->
+<div id="clouds-container" class="fixed left-0 top-1/4 z-40 pointer-events-none">
+  <!-- Cloud 1 - UTC Time -->
+  <div class="cloud cloud-1 opacity-0" style="transform: translateX(-100%);">
+    <div class="cloud-glass">
+      <div class="cloud-shape"></div>
+      <div class="cloud-content">
+        <div class="cloud-label">UTC TIME</div>
+        <div id="utc-time" class="cloud-value font-mono">--:--:--</div>
+        <div id="utc-date" class="cloud-date">----/--/--</div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Cloud 2 - Local Time -->
+  <div class="cloud cloud-2 opacity-0" style="transform: translateX(-100%);">
+    <div class="cloud-glass">
+      <div class="cloud-shape"></div>
+      <div class="cloud-content">
+        <div class="cloud-label">LOCAL TIME</div>
+        <div id="local-time" class="cloud-value font-mono">--:--:--</div>
+        <div id="local-zone" class="cloud-date">Timezone</div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Cloud 3 - Status -->
+  <div class="cloud cloud-3 opacity-0" style="transform: translateX(-100%);">
+    <div class="cloud-glass">
+      <div class="cloud-shape"></div>
+      <div class="cloud-content">
+        <div class="cloud-label">STATUS</div>
+        <div class="cloud-status">
+          <span class="status-dot"></span>
+          <span id="connection-status">Online</span>
+        </div>
+        <div id="uptime" class="cloud-date">Session: 0s</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Digital Butterflies Container (Right Side) -->
+<div id="butterflies-container" class="fixed right-0 bottom-0 z-40 pointer-events-none overflow-hidden" style="width: 300px; height: 400px;">
+  <!-- Butterfly 1 - Browser Info -->
+  <div id="butterfly-1" class="butterfly" style="right: 50px; bottom: 100px;">
+    <div class="butterfly-body">
+      <div class="wing wing-left">
+        <div class="wing-glass">
+          <div class="wing-data">
+            <span class="data-label">BROWSER</span>
+            <span id="browser-name" class="data-value">--</span>
+          </div>
+        </div>
+      </div>
+      <div class="wing wing-right">
+        <div class="wing-glass">
+          <div class="wing-data">
+            <span class="data-label">VERSION</span>
+            <span id="browser-version" class="data-value">--</span>
+          </div>
+        </div>
+      </div>
+      <div class="body-segment"></div>
+      <div class="antenna antenna-left"></div>
+      <div class="antenna antenna-right"></div>
+    </div>
+  </div>
+  
+  <!-- Butterfly 2 - Screen Info -->
+  <div id="butterfly-2" class="butterfly" style="right: 120px; bottom: 200px;">
+    <div class="butterfly-body">
+      <div class="wing wing-left">
+        <div class="wing-glass">
+          <div class="wing-data">
+            <span class="data-label">WIDTH</span>
+            <span id="screen-width" class="data-value">--</span>
+          </div>
+        </div>
+      </div>
+      <div class="wing wing-right">
+        <div class="wing-glass">
+          <div class="wing-data">
+            <span class="data-label">HEIGHT</span>
+            <span id="screen-height" class="data-value">--</span>
+          </div>
+        </div>
+      </div>
+      <div class="body-segment"></div>
+      <div class="antenna antenna-left"></div>
+      <div class="antenna antenna-right"></div>
+    </div>
+  </div>
+  
+  <!-- Butterfly 3 - OS Info -->
+  <div id="butterfly-3" class="butterfly" style="right: 30px; bottom: 280px;">
+    <div class="butterfly-body">
+      <div class="wing wing-left">
+        <div class="wing-glass">
+          <div class="wing-data">
+            <span class="data-label">OS</span>
+            <span id="os-name" class="data-value">--</span>
+          </div>
+        </div>
+      </div>
+      <div class="wing wing-right">
+        <div class="wing-glass">
+          <div class="wing-data">
+            <span class="data-label">DEVICE</span>
+            <span id="device-type" class="data-value">--</span>
+          </div>
+        </div>
+      </div>
+      <div class="body-segment"></div>
+      <div class="antenna antenna-left"></div>
+      <div class="antenna antenna-right"></div>
+    </div>
+  </div>
+  
+  <!-- Butterfly 4 - Visitor Stats -->
+  <div id="butterfly-4" class="butterfly" style="right: 150px; bottom: 50px;">
+    <div class="butterfly-body">
+      <div class="wing wing-left">
+        <div class="wing-glass">
+          <div class="wing-data">
+            <span class="data-label">VISITORS</span>
+            <span id="visitor-total" class="data-value">--</span>
+          </div>
+        </div>
+      </div>
+      <div class="wing wing-right">
+        <div class="wing-glass">
+          <div class="wing-data">
+            <span class="data-label">ONLINE</span>
+            <span id="visitors-online" class="data-value">1</span>
+          </div>
+        </div>
+      </div>
+      <div class="body-segment"></div>
+      <div class="antenna antenna-left"></div>
+      <div class="antenna antenna-right"></div>
+    </div>
+  </div>
+</div>
+
+<!-- Toggle Button -->
+<button id="toggle-ambience" class="fixed right-4 top-20 z-50 p-2 bg-background/80 backdrop-blur-md border rounded-full shadow-lg hover:scale-110 transition-all group" title="Toggle Digital Ambience">
+  <svg class="w-5 h-5 text-foreground group-hover:text-primary transition-colors" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+    <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" />
+    <path d="M17 4a2 2 0 0 0 2 2a2 2 0 0 0 -2 2a2 2 0 0 0 -2 -2a2 2 0 0 0 2 -2" />
+    <path d="M19 11h2m-1 -1v2" />
+  </svg>
+</button>
+
+<style>
+  /* Cloud Styles */
+  .cloud {
+    position: absolute;
+    transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  .cloud-1 { top: 0; left: 10px; animation-delay: 0s; }
+  .cloud-2 { top: 90px; left: 25px; animation-delay: 0.3s; }
+  .cloud-3 { top: 180px; left: 5px; animation-delay: 0.6s; }
+  
+  .cloud.visible {
+    opacity: 1;
+    transform: translateX(0) !important;
+  }
+  
+  .cloud-glass {
+    position: relative;
+    padding: 12px 16px;
+    background: linear-gradient(135deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.05) 100%);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255,255,255,0.18);
+    border-radius: 20px 20px 20px 5px;
+    box-shadow: 
+      0 8px 32px rgba(0,0,0,0.1),
+      inset 0 1px 0 rgba(255,255,255,0.2);
+    min-width: 120px;
+  }
+  
+  .cloud-shape {
+    position: absolute;
+    top: -8px;
+    left: 15px;
+    width: 30px;
+    height: 20px;
+    background: inherit;
+    border-radius: 50%;
+    filter: blur(2px);
+    opacity: 0.5;
+  }
+  
+  .cloud-label {
+    font-size: 8px;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    color: var(--foreground);
+    opacity: 0.5;
+    margin-bottom: 2px;
+  }
+  
+  .cloud-value {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--foreground);
+    line-height: 1.2;
+  }
+  
+  .cloud-date {
+    font-size: 9px;
+    color: var(--foreground);
+    opacity: 0.6;
+    margin-top: 2px;
+  }
+  
+  .cloud-status {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  
+  .status-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #22c55e;
+    animation: pulse-status 2s ease-in-out infinite;
+    box-shadow: 0 0 8px #22c55e;
+  }
+  
+  @keyframes pulse-status {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.7; transform: scale(1.2); }
+  }
+  
+  /* Cloud float animation */
+  .cloud.visible {
+    animation: cloud-float 6s ease-in-out infinite;
+  }
+  
+  .cloud-1.visible { animation-delay: 0s; }
+  .cloud-2.visible { animation-delay: 2s; }
+  .cloud-3.visible { animation-delay: 4s; }
+  
+  @keyframes cloud-float {
+    0%, 100% { transform: translateX(0) translateY(0); }
+    25% { transform: translateX(5px) translateY(-3px); }
+    50% { transform: translateX(0) translateY(-5px); }
+    75% { transform: translateX(-3px) translateY(-2px); }
+  }
+  
+  /* Butterfly Styles */
+  .butterfly {
+    position: absolute;
+    width: 100px;
+    height: 60px;
+    cursor: pointer;
+    pointer-events: auto;
+    transition: all 0.3s ease;
+  }
+  
+  .butterfly:hover {
+    transform: scale(1.1);
+  }
+  
+  .butterfly-body {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .body-segment {
+    position: absolute;
+    width: 6px;
+    height: 25px;
+    background: linear-gradient(180deg, var(--foreground) 0%, rgba(var(--foreground-rgb), 0.6) 100%);
+    border-radius: 3px;
+    z-index: 10;
+  }
+  
+  .antenna {
+    position: absolute;
+    width: 1px;
+    height: 12px;
+    background: var(--foreground);
+    top: 8px;
+    transform-origin: bottom;
+  }
+  
+  .antenna-left {
+    left: calc(50% - 4px);
+    transform: rotate(-25deg);
+  }
+  
+  .antenna-right {
+    right: calc(50% - 4px);
+    transform: rotate(25deg);
+  }
+  
+  .antenna::after {
+    content: '';
+    position: absolute;
+    top: -3px;
+    left: -1.5px;
+    width: 4px;
+    height: 4px;
+    background: var(--foreground);
+    border-radius: 50%;
+  }
+  
+  /* Wing Styles - Glassmorphism */
+  .wing {
+    position: absolute;
+    width: 45px;
+    height: 55px;
+    transform-origin: center right;
+    animation: flap 0.4s ease-in-out infinite;
+  }
+  
+  .wing-left {
+    right: 50%;
+    transform-origin: right center;
+    animation-name: flap-left;
+  }
+  
+  .wing-right {
+    left: 50%;
+    transform-origin: left center;
+    animation-name: flap-right;
+  }
+  
+  .wing-glass {
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+      135deg, 
+      rgba(255,255,255,0.15) 0%, 
+      rgba(255,255,255,0.05) 50%,
+      rgba(255,255,255,0.1) 100%
+    );
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 50% 50% 50% 10%;
+    box-shadow: 
+      0 4px 16px rgba(0,0,0,0.1),
+      inset 0 1px 0 rgba(255,255,255,0.3),
+      inset 0 -1px 0 rgba(0,0,0,0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    position: relative;
+  }
+  
+  .wing-left .wing-glass {
+    border-radius: 50% 10% 50% 50%;
+  }
+  
+  .wing-right .wing-glass {
+    border-radius: 10% 50% 50% 50%;
+  }
+  
+  /* Wing shimmer effect */
+  .wing-glass::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(
+      45deg,
+      transparent 40%,
+      rgba(255,255,255,0.3) 50%,
+      transparent 60%
+    );
+    animation: shimmer 3s ease-in-out infinite;
+  }
+  
+  @keyframes shimmer {
+    0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
+    100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
+  }
+  
+  .wing-data {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 4px;
+    z-index: 1;
+  }
+  
+  .data-label {
+    font-size: 6px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    color: var(--foreground);
+    opacity: 0.6;
+  }
+  
+  .data-value {
+    font-size: 9px;
+    font-weight: 700;
+    color: var(--foreground);
+    font-family: ui-monospace, monospace;
+  }
+  
+  /* Wing flapping animation */
+  @keyframes flap-left {
+    0%, 100% { transform: rotateY(0deg) rotateZ(-5deg); }
+    50% { transform: rotateY(50deg) rotateZ(5deg); }
+  }
+  
+  @keyframes flap-right {
+    0%, 100% { transform: rotateY(0deg) rotateZ(5deg); }
+    50% { transform: rotateY(-50deg) rotateZ(-5deg); }
+  }
+  
+  /* Butterfly floating movement */
+  .butterfly {
+    animation: butterfly-float 8s ease-in-out infinite;
+  }
+  
+  #butterfly-1 { animation-delay: 0s; }
+  #butterfly-2 { animation-delay: 2s; }
+  #butterfly-3 { animation-delay: 4s; }
+  #butterfly-4 { animation-delay: 6s; }
+  
+  @keyframes butterfly-float {
+    0%, 100% { 
+      transform: translate(0, 0) rotate(0deg); 
+    }
+    25% { 
+      transform: translate(15px, -20px) rotate(5deg); 
+    }
+    50% { 
+      transform: translate(-10px, -35px) rotate(-3deg); 
+    }
+    75% { 
+      transform: translate(20px, -15px) rotate(4deg); 
+    }
+  }
+  
+  /* Hover pause animation */
+  .butterfly:hover,
+  .butterfly:hover .wing {
+    animation-play-state: paused;
+  }
+  
+  /* Hidden state */
+  #clouds-container.hidden,
+  #butterflies-container.hidden {
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.5s ease;
+  }
+  
+  /* Responsive */
+  @media (max-width: 768px) {
+    #butterflies-container {
+      display: none;
+    }
+    
+    #clouds-container {
+      transform: scale(0.8);
+      transform-origin: top left;
+    }
+  }
+</style>
+
+<script>
+  document.addEventListener('astro:page-load', () => {
+    const cloudsContainer = document.getElementById('clouds-container')
+    const butterfliesContainer = document.getElementById('butterflies-container')
+    const toggleBtn = document.getElementById('toggle-ambience')
+    
+    // Elements
+    const utcTime = document.getElementById('utc-time')
+    const utcDate = document.getElementById('utc-date')
+    const localTime = document.getElementById('local-time')
+    const localZone = document.getElementById('local-zone')
+    const uptime = document.getElementById('uptime')
+    const browserName = document.getElementById('browser-name')
+    const browserVersion = document.getElementById('browser-version')
+    const screenWidth = document.getElementById('screen-width')
+    const screenHeight = document.getElementById('screen-height')
+    const osName = document.getElementById('os-name')
+    const deviceType = document.getElementById('device-type')
+    const visitorTotal = document.getElementById('visitor-total')
+    
+    if (!cloudsContainer || !butterfliesContainer) return
+    
+    let sessionStart = Date.now()
+    let isVisible = localStorage.getItem('hideAmbience') !== 'true'
+    
+    // Initialize visibility
+    if (!isVisible) {
+      cloudsContainer.classList.add('hidden')
+      butterfliesContainer.classList.add('hidden')
+    }
+    
+    // Toggle handler
+    toggleBtn?.addEventListener('click', () => {
+      isVisible = !isVisible
+      localStorage.setItem('hideAmbience', (!isVisible).toString())
+      
+      if (isVisible) {
+        cloudsContainer.classList.remove('hidden')
+        butterfliesContainer.classList.remove('hidden')
+        showClouds()
+      } else {
+        cloudsContainer.classList.add('hidden')
+        butterfliesContainer.classList.add('hidden')
+      }
+    })
+    
+    // Show clouds with delay
+    const showClouds = () => {
+      const clouds = document.querySelectorAll('.cloud')
+      clouds.forEach((cloud, i) => {
+        setTimeout(() => {
+          cloud.classList.add('visible')
+        }, i * 200 + 500)
+      })
+    }
+    
+    // Update time displays
+    const updateTime = () => {
+      const now = new Date()
+      
+      // UTC Time
+      if (utcTime) {
+        utcTime.textContent = now.toUTCString().split(' ')[4]
+      }
+      if (utcDate) {
+        utcDate.textContent = now.toISOString().split('T')[0]
+      }
+      
+      // Local Time
+      if (localTime) {
+        localTime.textContent = now.toLocaleTimeString('en-US', { 
+          hour12: false,
+          hour: '2-digit',
+          minute: '2-digit',
+          second: '2-digit'
+        })
+      }
+      if (localZone) {
+        const tz = Intl.DateTimeFormat().resolvedOptions().timeZone
+        localZone.textContent = tz.replace('_', ' ')
+      }
+      
+      // Uptime
+      if (uptime) {
+        const elapsed = Math.floor((Date.now() - sessionStart) / 1000)
+        const mins = Math.floor(elapsed / 60)
+        const secs = elapsed % 60
+        uptime.textContent = mins > 0 ? `Session: ${mins}m ${secs}s` : `Session: ${secs}s`
+      }
+    }
+    
+    // Get browser info
+    const getBrowserInfo = () => {
+      const ua = navigator.userAgent
+      let browser = 'Unknown'
+      let version = ''
+      
+      if (ua.includes('Firefox/')) {
+        browser = 'Firefox'
+        version = ua.split('Firefox/')[1]?.split(' ')[0] || ''
+      } else if (ua.includes('Chrome/') && !ua.includes('Edg/')) {
+        browser = 'Chrome'
+        version = ua.split('Chrome/')[1]?.split(' ')[0] || ''
+      } else if (ua.includes('Safari/') && !ua.includes('Chrome/')) {
+        browser = 'Safari'
+        version = ua.split('Version/')[1]?.split(' ')[0] || ''
+      } else if (ua.includes('Edg/')) {
+        browser = 'Edge'
+        version = ua.split('Edg/')[1]?.split(' ')[0] || ''
+      } else if (ua.includes('Opera/') || ua.includes('OPR/')) {
+        browser = 'Opera'
+        version = ua.split('OPR/')[1]?.split(' ')[0] || ''
+      }
+      
+      if (browserName) browserName.textContent = browser
+      if (browserVersion) browserVersion.textContent = version.split('.')[0] || '--'
+    }
+    
+    // Get screen info
+    const getScreenInfo = () => {
+      if (screenWidth) screenWidth.textContent = `${window.innerWidth}px`
+      if (screenHeight) screenHeight.textContent = `${window.innerHeight}px`
+    }
+    
+    // Get OS info
+    const getOSInfo = () => {
+      const ua = navigator.userAgent
+      let os = 'Unknown'
+      let device = 'Desktop'
+      
+      if (ua.includes('Windows')) os = 'Windows'
+      else if (ua.includes('Mac')) os = 'macOS'
+      else if (ua.includes('Linux') && !ua.includes('Android')) os = 'Linux'
+      else if (ua.includes('Android')) { os = 'Android'; device = 'Mobile' }
+      else if (ua.includes('iPhone') || ua.includes('iPad')) { 
+        os = 'iOS'
+        device = ua.includes('iPad') ? 'Tablet' : 'Mobile'
+      }
+      
+      if (osName) osName.textContent = os
+      if (deviceType) deviceType.textContent = device
+    }
+    
+    // Get visitor count
+    const getVisitorCount = () => {
+      const key = 'site_visitors_ambience'
+      let count = parseInt(localStorage.getItem(key) || '0')
+      const sessionKey = 'session_ambience'
+      
+      if (!sessionStorage.getItem(sessionKey)) {
+        count++
+        localStorage.setItem(key, count.toString())
+        sessionStorage.setItem(sessionKey, '1')
+      }
+      
+      if (visitorTotal) visitorTotal.textContent = (count + 389).toString()
+    }
+    
+    // Update screen size on resize
+    window.addEventListener('resize', getScreenInfo)
+    
+    // Initialize
+    if (isVisible) {
+      showClouds()
+    }
+    
+    getBrowserInfo()
+    getScreenInfo()
+    getOSInfo()
+    getVisitorCount()
+    updateTime()
+    
+    // Update time every second
+    setInterval(updateTime, 1000)
+  })
+</script>
