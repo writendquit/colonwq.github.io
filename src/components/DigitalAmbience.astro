@@ -1091,12 +1091,7 @@
     }
     
     // Update screen size on resize
-    window.addEventListener('resize', () => {
-      getScreenInfo()
-      if (matrixActive) {
-        initMatrix()
-      }
-    })
+    window.addEventListener('resize', getScreenInfo)
     
     // Initialize
     if (isVisible) {
