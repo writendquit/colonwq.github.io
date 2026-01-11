@@ -154,17 +154,12 @@
   </svg>
 </button>
 
-<!-- Matrix Rain Effect (Neo's Screen - Exact Movie Recreation) -->
-<div id="matrix-container" class="fixed inset-0 z-[9999] pointer-events-none opacity-0 transition-opacity duration-500">
-  <canvas id="matrix-canvas"></canvas>
-  <!-- Terminal style text overlay - appears after rain -->
-  <div id="matrix-terminal" class="absolute inset-0 flex items-center justify-center bg-black opacity-0">
-    <div class="terminal-screen w-full max-w-2xl px-8">
-      <div id="terminal-line-1" class="terminal-line text-green-500 font-mono text-lg md:text-2xl mb-6"></div>
-      <div id="terminal-line-2" class="terminal-line text-green-500 font-mono text-lg md:text-2xl mb-6"></div>
-      <div id="terminal-line-3" class="terminal-line text-green-500 font-mono text-lg md:text-2xl mb-6"></div>
-      <div id="terminal-line-4" class="terminal-line text-green-500 font-mono text-lg md:text-2xl"></div>
-      <span id="terminal-cursor" class="terminal-cursor">_</span>
+<!-- Neo's Screen - Exact Movie Recreation (The Matrix 1999) -->
+<div id="matrix-container" class="fixed inset-0 z-[9999] pointer-events-none opacity-0">
+  <!-- Pure black screen with terminal text - exactly like the movie -->
+  <div id="neo-screen" class="absolute inset-0 bg-black flex items-start justify-start p-8 md:p-16">
+    <div class="neo-terminal font-mono text-base md:text-xl leading-relaxed">
+      <span id="neo-text"></span><span id="neo-cursor" class="neo-cursor">█</span>
     </div>
   </div>
 </div>
@@ -571,86 +566,36 @@
     }
   }
   
-  /* ===== MATRIX RAIN EFFECT (Movie Accurate) ===== */
-  #matrix-canvas {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: #000;
-  }
-  
+  /* ===== NEO'S SCREEN - EXACT MOVIE STYLE ===== */
   #matrix-container.active {
     opacity: 1;
     pointer-events: auto;
   }
   
-  /* Terminal overlay */
-  #matrix-terminal {
-    transition: opacity 0.5s ease;
-    z-index: 10;
+  #neo-screen {
+    background: #000;
   }
   
-  #matrix-terminal.visible {
-    opacity: 1;
-  }
-  
-  .terminal-screen {
-    position: relative;
-  }
-  
-  .terminal-line {
-    font-family: 'Courier New', 'Lucida Console', monospace;
-    letter-spacing: 2px;
-    text-shadow: 0 0 5px #0f0, 0 0 10px #0f0;
-    min-height: 1.5em;
+  .neo-terminal {
+    color: #00ff00;
+    font-family: 'Courier New', 'Lucida Console', Monaco, monospace;
     white-space: pre-wrap;
+    word-wrap: break-word;
   }
   
-  /* Blinking cursor like old CRT terminal */
-  .terminal-cursor {
-    display: inline-block;
-    font-family: 'Courier New', monospace;
-    font-size: 1.5rem;
-    color: #0f0;
-    text-shadow: 0 0 5px #0f0, 0 0 10px #0f0;
-    animation: cursor-blink 0.7s step-end infinite;
+  #neo-text {
+    color: #00ff00;
   }
   
-  @keyframes cursor-blink {
+  /* Blinking block cursor - exactly like old terminals */
+  .neo-cursor {
+    color: #00ff00;
+    animation: neo-blink 1s step-end infinite;
+  }
+  
+  @keyframes neo-blink {
     0%, 50% { opacity: 1; }
     51%, 100% { opacity: 0; }
-  }
-  
-  /* CRT screen effect */
-  #matrix-terminal::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: repeating-linear-gradient(
-      0deg,
-      rgba(0, 0, 0, 0.15),
-      rgba(0, 0, 0, 0.15) 1px,
-      transparent 1px,
-      transparent 2px
-    );
-    pointer-events: none;
-    z-index: 100;
-  }
-  
-  /* Slight screen flicker */
-  #matrix-terminal.visible {
-    animation: screen-flicker 0.15s infinite;
-  }
-  
-  @keyframes screen-flicker {
-    0% { opacity: 0.97; }
-    50% { opacity: 1; }
-    100% { opacity: 0.98; }
   }
   
   /* Butterfly color transition based on position */
@@ -706,15 +651,10 @@
     const butterflyEl = document.getElementById('minecraft-butterfly')
     const toggleBtn = document.getElementById('toggle-ambience')
     
-    // Matrix elements
+    // Neo's screen elements
     const matrixContainer = document.getElementById('matrix-container')
-    const matrixCanvas = document.getElementById('matrix-canvas') as HTMLCanvasElement
-    const matrixTerminal = document.getElementById('matrix-terminal')
-    const terminalLine1 = document.getElementById('terminal-line-1')
-    const terminalLine2 = document.getElementById('terminal-line-2')
-    const terminalLine3 = document.getElementById('terminal-line-3')
-    const terminalLine4 = document.getElementById('terminal-line-4')
-    const terminalCursor = document.getElementById('terminal-cursor')
+    const neoText = document.getElementById('neo-text')
+    const neoCursor = document.getElementById('neo-cursor')
     
     // Cloud elements
     const utcTime = document.getElementById('utc-time')
@@ -744,7 +684,6 @@
     let isVisible = localStorage.getItem('hideAmbience') !== 'true'
     let idleTimer: number | null = null
     let matrixActive = false
-    let matrixAnimationId: number | null = null
     let lastActivityTime = Date.now()
     const IDLE_TIMEOUT = 11000 // 11 seconds
     
@@ -760,15 +699,8 @@
       butterflyEl.classList.add('hidden')
     }
     
-    // ===== MATRIX RAIN EFFECT (Movie Accurate) =====
-    // Japanese katakana + half-width kana + numbers (like the actual movie)
-    const matrixChars = 'ｱｲｳｴｵｶｷｸｹｺｻｼｽｾｿﾀﾁﾂﾃﾄﾅﾆﾇﾈﾉﾊﾋﾌﾍﾎﾏﾐﾑﾒﾓﾔﾕﾖﾗﾘﾙﾚﾛﾜﾝ012345789Z'
-    let columns: number[] = []
-    let ctx: CanvasRenderingContext2D | null = null
-    let matrixPhase: 'rain' | 'terminal' | 'typing' = 'rain'
-    let typewriterTimeout: number | null = null
-    
-    // Neo's screen messages - EXACT from the movie
+    // ===== NEO'S SCREEN - EXACT MOVIE RECREATION =====
+    // The exact messages from The Matrix (1999) - Neo's computer screen scene
     const neoMessages = [
       'Wake up, Neo...',
       'The Matrix has you...',
@@ -776,171 +708,81 @@
       'Knock, knock, Neo.'
     ]
     
-    const initMatrix = () => {
-      if (!matrixCanvas) return
-      ctx = matrixCanvas.getContext('2d')
-      if (!ctx) return
-      
-      matrixCanvas.width = window.innerWidth
-      matrixCanvas.height = window.innerHeight
-      
-      const fontSize = 16
-      const columnCount = Math.floor(matrixCanvas.width / fontSize)
-      columns = Array(columnCount).fill(0).map(() => Math.random() * -100)
-    }
+    let currentText = ''
+    let messageIndex = 0
+    let charIndex = 0
+    let typingTimeout: number | null = null
     
-    const drawMatrix = () => {
-      if (!ctx || !matrixCanvas || matrixPhase !== 'rain') return
+    // Type one character at a time - exactly like the movie
+    const typeNextChar = () => {
+      if (!matrixActive || !neoText) return
       
-      // Fade effect - creates the trail
-      ctx.fillStyle = 'rgba(0, 0, 0, 0.05)'
-      ctx.fillRect(0, 0, matrixCanvas.width, matrixCanvas.height)
+      const currentMessage = neoMessages[messageIndex]
       
-      const fontSize = 16
-      ctx.font = `${fontSize}px monospace`
-      
-      columns.forEach((y, i) => {
-        const char = matrixChars[Math.floor(Math.random() * matrixChars.length)]
-        const x = i * fontSize
+      if (charIndex < currentMessage.length) {
+        // Type next character
+        currentText += currentMessage[charIndex]
+        neoText.textContent = currentText
+        charIndex++
         
-        // Leading character is brighter (white/bright green)
-        if (Math.random() > 0.95) {
-          ctx!.fillStyle = '#fff'
-        } else {
-          // Varying shades of green for the trail
-          const brightness = Math.floor(Math.random() * 155) + 100
-          ctx!.fillStyle = `rgb(0, ${brightness}, 0)`
-        }
+        // Typing speed - like someone typing on keyboard
+        typingTimeout = window.setTimeout(typeNextChar, 70 + Math.random() * 50)
+      } else {
+        // Finished current line
+        charIndex = 0
+        messageIndex++
         
-        ctx!.fillText(char, x, y)
-        
-        // Reset column when it goes off screen (with randomness)
-        if (y > matrixCanvas.height && Math.random() > 0.975) {
-          columns[i] = 0
-        } else {
-          columns[i] = y + fontSize
+        if (messageIndex < neoMessages.length) {
+          // Add new line and pause before next message
+          currentText += '\n\n'
+          neoText.textContent = currentText
+          typingTimeout = window.setTimeout(typeNextChar, 2000) // Pause between messages
         }
-      })
-      
-      if (matrixActive && matrixPhase === 'rain') {
-        matrixAnimationId = requestAnimationFrame(drawMatrix)
+        // If all messages done, just keep showing with blinking cursor
       }
     }
     
-    // Typewriter effect - character by character like in the movie
-    const typeMessage = (element: HTMLElement, message: string, callback?: () => void) => {
-      let index = 0
-      element.textContent = ''
-      
-      const type = () => {
-        if (index < message.length && matrixActive) {
-          element.textContent += message[index]
-          index++
-          typewriterTimeout = window.setTimeout(type, 80 + Math.random() * 40) // Slight randomness like real typing
-        } else if (callback && matrixActive) {
-          typewriterTimeout = window.setTimeout(callback, 1500) // Pause before next line
-        }
-      }
-      type()
-    }
-    
-    // Start the terminal sequence (after rain)
-    const startTerminalSequence = () => {
-      matrixPhase = 'terminal'
-      
-      // Stop the rain animation
-      if (matrixAnimationId) {
-        cancelAnimationFrame(matrixAnimationId)
-        matrixAnimationId = null
-      }
-      
-      // Clear canvas and show terminal
-      if (ctx && matrixCanvas) {
-        ctx.fillStyle = '#000'
-        ctx.fillRect(0, 0, matrixCanvas.width, matrixCanvas.height)
-      }
-      
-      // Show terminal with CRT effect
-      matrixTerminal?.classList.add('visible')
-      matrixPhase = 'typing'
-      
-      // Clear previous text
-      if (terminalLine1) terminalLine1.textContent = ''
-      if (terminalLine2) terminalLine2.textContent = ''
-      if (terminalLine3) terminalLine3.textContent = ''
-      if (terminalLine4) terminalLine4.textContent = ''
-      
-      // Start typing sequence
-      setTimeout(() => {
-        if (!matrixActive) return
-        typeMessage(terminalLine1!, neoMessages[0], () => {
-          if (!matrixActive) return
-          typeMessage(terminalLine2!, neoMessages[1], () => {
-            if (!matrixActive) return
-            typeMessage(terminalLine3!, neoMessages[2], () => {
-              if (!matrixActive) return
-              typeMessage(terminalLine4!, neoMessages[3])
-            })
-          })
-        })
-      }, 500)
-    }
-    
-    const startMatrix = () => {
+    const startNeoScreen = () => {
       if (matrixActive) return
       matrixActive = true
-      matrixPhase = 'rain'
-      initMatrix()
+      
+      // Reset state
+      currentText = ''
+      messageIndex = 0
+      charIndex = 0
+      
+      if (neoText) neoText.textContent = ''
+      
+      // Show the black screen
       matrixContainer?.classList.add('active')
-      matrixTerminal?.classList.remove('visible')
       
-      // Clear terminal lines
-      if (terminalLine1) terminalLine1.textContent = ''
-      if (terminalLine2) terminalLine2.textContent = ''
-      if (terminalLine3) terminalLine3.textContent = ''
-      if (terminalLine4) terminalLine4.textContent = ''
-      
-      drawMatrix()
-      
-      // After 3 seconds of rain, transition to terminal
-      setTimeout(() => {
-        if (matrixActive) {
-          startTerminalSequence()
-        }
-      }, 3000)
+      // Start typing after a short pause (cursor blinks first like in movie)
+      typingTimeout = window.setTimeout(typeNextChar, 1500)
     }
     
-    const stopMatrix = () => {
+    const stopNeoScreen = () => {
       matrixActive = false
-      matrixPhase = 'rain'
       
-      if (matrixAnimationId) {
-        cancelAnimationFrame(matrixAnimationId)
-        matrixAnimationId = null
-      }
-      
-      if (typewriterTimeout) {
-        clearTimeout(typewriterTimeout)
-        typewriterTimeout = null
+      if (typingTimeout) {
+        clearTimeout(typingTimeout)
+        typingTimeout = null
       }
       
       matrixContainer?.classList.remove('active')
-      matrixTerminal?.classList.remove('visible')
       
-      // Clear terminal
-      if (terminalLine1) terminalLine1.textContent = ''
-      if (terminalLine2) terminalLine2.textContent = ''
-      if (terminalLine3) terminalLine3.textContent = ''
-      if (terminalLine4) terminalLine4.textContent = ''
+      if (neoText) neoText.textContent = ''
+      currentText = ''
+      messageIndex = 0
+      charIndex = 0
       
       resetIdleTimer()
     }
     
-    // Exit matrix on click or ESC
-    matrixContainer?.addEventListener('click', stopMatrix)
+    // Exit on click or ESC
+    matrixContainer?.addEventListener('click', stopNeoScreen)
     document.addEventListener('keydown', (e) => {
       if (e.key === 'Escape' && matrixActive) {
-        stopMatrix()
+        stopNeoScreen()
       }
     })
     
@@ -952,7 +794,7 @@
       }
       if (!matrixActive) {
         idleTimer = window.setTimeout(() => {
-          startMatrix()
+          startNeoScreen()
         }, IDLE_TIMEOUT)
       }
     }
