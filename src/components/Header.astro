@@ -53,18 +53,19 @@ const navLinks = [
       <ThemeToggle transition:persist />
       
       <Link 
-        href="https://github.com/writendquit" 
+        href="https://app.hackthebox.com/public/users/431928" 
         external 
         class="hidden px-3 py-1.5 text-xs font-medium text-muted-foreground hover:text-foreground transition-colors lg:block"
       >
-        GITHUB
+        HTB
       </Link>
       
       <Link 
-        href="/about" 
-        class="hidden px-4 py-1.5 text-xs font-medium border rounded hover:bg-muted transition-colors lg:block"
+        href="https://ctf.hackthebox.com/user/profile/12588" 
+        external 
+        class="hidden px-3 py-1.5 text-xs font-medium text-muted-foreground hover:text-foreground transition-colors lg:block"
       >
-        CONTACT
+        HTB CTF
       </Link>
       
       <!-- Mobile Menu Toggle -->
@@ -100,12 +101,20 @@ const navLinks = [
       })}
       <div class="border-t my-2"></div>
       <Link 
-        href="https://github.com/writendquit" 
+        href="https://app.hackthebox.com/public/users/431928" 
         external 
         class="flex items-center gap-2 px-3 py-2 text-sm text-muted-foreground hover:text-foreground transition-colors"
       >
-        <Icon name="lucide:github" class="size-4" />
-        GitHub
+        <Icon name="lucide:box" class="size-4" />
+        HTB
+      </Link>
+      <Link 
+        href="https://ctf.hackthebox.com/user/profile/12588" 
+        external 
+        class="flex items-center gap-2 px-3 py-2 text-sm text-muted-foreground hover:text-foreground transition-colors"
+      >
+        <Icon name="lucide:flag" class="size-4" />
+        HTB CTF
       </Link>
     </nav>
   </div>
