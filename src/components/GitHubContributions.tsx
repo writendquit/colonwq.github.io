@@ -118,14 +118,14 @@ export default function GitHubContributions({ username }: Props) {
 
   const getLevelColor = (level: number, isHovered = false) => {
     if (isHovered) {
-      return 'bg-green-400 ring-2 ring-green-400/50'
+      return 'bg-white ring-2 ring-white/50'
     }
     const colors = [
       'bg-[#161b22]',
-      'bg-[#0e4429]',
-      'bg-[#006d32]',
-      'bg-[#26a641]',
-      'bg-[#39d353]',
+      'bg-[#3a3a3a]',
+      'bg-[#6b6b6b]',
+      'bg-[#a0a0a0]',
+      'bg-[#ffffff]',
     ]
     return colors[level] || colors[0]
   }
@@ -180,10 +180,10 @@ export default function GitHubContributions({ username }: Props) {
         </div>
         <div className="flex items-center gap-2">
           <span className="relative flex h-3 w-3">
-            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
-            <span className="relative inline-flex rounded-full h-3 w-3 bg-green-500"></span>
+            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-white opacity-75"></span>
+            <span className="relative inline-flex rounded-full h-3 w-3 bg-white"></span>
           </span>
-          <span className="text-green-500 text-sm font-medium">LIVE</span>
+          <span className="text-white text-sm font-medium">LIVE</span>
         </div>
       </div>
       
@@ -244,7 +244,7 @@ export default function GitHubContributions({ username }: Props) {
                 {week.map((day, dayIndex) => (
                   <div
                     key={`${weekIndex}-${dayIndex}`}
-                    className={`w-[13px] h-[13px] rounded-sm ${getLevelColor(day.level)} cursor-pointer transition-all duration-150 hover:scale-125 hover:ring-2 hover:ring-[#39d353]/50`}
+                    className={`w-[13px] h-[13px] rounded-sm ${getLevelColor(day.level)} cursor-pointer transition-all duration-150 hover:scale-125 hover:ring-2 hover:ring-white/50`}
                     title={`${day.date}: ${day.count} contribution${day.count !== 1 ? 's' : ''}`}
                   />
                 ))}
@@ -264,7 +264,7 @@ export default function GitHubContributions({ username }: Props) {
             href={`https://github.com/${username}`}
             target="_blank"
             rel="noopener noreferrer"
-            className="text-sm text-[#58a6ff] hover:underline flex items-center gap-1"
+            className="text-sm text-white hover:underline flex items-center gap-1"
           >
             View on GitHub
             <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
