@@ -293,214 +293,244 @@ const GITHUB_USERNAME = 'writendquit'
     </div>
   </section>
 
-  <!-- ===== BENTO GRID SECTION ===== -->
   <!-- ===== BENTO GRID - FULL PAGE ===== -->
-  <section id="bento-section" class="bg-[#0a0a0a] pb-4">
-    <div class="max-w-[1800px] mx-auto px-4">
-      <!-- MAIN BENTO GRID -->
-      <div class="grid grid-cols-12 auto-rows-[120px] gap-3">
+  <section id="bento-section" class="bg-[#0a0a0a] py-8">
+    <div class="max-w-[1600px] mx-auto px-6 flex gap-6">
+      
+      <!-- MAIN CONTENT -->
+      <div class="flex-1 grid grid-cols-10 auto-rows-[140px] gap-4">
         
-        <!-- ROW 1 -->
-        <!-- Discord Card (3x2) -->
-        <div class="col-span-3 row-span-2 bg-[#141414] rounded-xl border border-[#252525] p-5 flex flex-col hover:border-orange-500/30 transition-all duration-300 group">
-          <div class="flex items-center gap-3 mb-3">
-            <img src="/discord-profile.png" alt="Discord" class="w-14 h-14 rounded-full grayscale group-hover:grayscale-0 transition-all duration-300" />
-            <div class="flex gap-1">
-              <span class="w-2 h-2 bg-[#5865F2] rounded-full"></span>
-              <span class="w-2 h-2 bg-[#3a3a3a] rounded-full"></span>
-              <span class="w-2 h-2 bg-[#3a3a3a] rounded-full"></span>
+        <!-- Discord Card - Exact like screenshot (3x2) -->
+        <a href="https://discord.com/users/writendquit" target="_blank" class="col-span-3 row-span-2 bg-[#141414] rounded-2xl border border-[#1e1e1e] overflow-hidden group hover:shadow-[0_0_30px_rgba(249,115,22,0.15)] transition-all duration-500">
+          <div class="h-full w-full p-5 flex flex-col grayscale group-hover:grayscale-0 transition-all duration-500">
+            <div class="flex items-start gap-3">
+              <div class="relative">
+                <img src="/discord-profile.png" alt="Discord" class="w-16 h-16 rounded-full object-cover" />
+                <div class="absolute -bottom-1 -right-1 w-5 h-5 bg-[#f04747] rounded-full border-4 border-[#141414]"></div>
+              </div>
+              <div class="flex-1 bg-[#1e1e1e] rounded-lg p-2 text-[10px] text-[#8b949e] opacity-0 group-hover:opacity-100 transition-opacity">
+                握るには、まず手を広げなければなりません。そして、放してください。
+              </div>
+            </div>
+            <div class="mt-auto">
+              <div class="flex items-center gap-2">
+                <p class="text-white font-bold text-lg">:wq!</p>
+                <span class="text-yellow-500">🔥</span>
+              </div>
+              <p class="text-[#8b949e] text-sm">writendquit</p>
+              <div class="flex items-center gap-2 mt-2">
+                <span class="text-yellow-500 text-sm">🎮</span>
+                <span class="text-[#8b949e] text-xs">Z.ai</span>
+                <span class="text-[#8b949e] text-xs ml-2">🌟 ◆ ❤ ◇</span>
+              </div>
+              <p class="text-[#8b949e] text-xs mt-2">Let's play a game :)</p>
             </div>
           </div>
-          <div class="mt-auto">
-            <p class="text-white font-semibold text-lg">writendquit</p>
-            <p class="text-[#8b949e] text-sm">@writendquit</p>
-            <div class="mt-3 bg-[#5865F2]/20 rounded px-3 py-1.5 text-xs text-[#5865F2] inline-block">
-              Playing CTF
-            </div>
-          </div>
-        </div>
+        </a>
 
-        <!-- Featured Blog (5x2) -->
-        <div class="col-span-5 row-span-2 bg-[#141414] rounded-xl border border-[#252525] overflow-hidden hover:border-orange-500/30 transition-all duration-300 group relative">
-          <div class="absolute inset-0 bg-gradient-to-br from-orange-500/5 to-transparent"></div>
+        <!-- Latest Blog Post with Image (4x2) - 3D tilt effect -->
+        <div class="col-span-4 row-span-2 perspective-1000">
           {blog[0] && (
-            <a href={`/blog/${blog[0].id}`} class="block h-full p-5 flex flex-col justify-end relative z-10">
-              <span class="absolute top-4 right-4 text-orange-500/40 text-3xl">✦</span>
-              <span class="text-[10px] uppercase tracking-widest text-orange-500 mb-2">Latest Post</span>
-              <p class="text-white font-bold text-xl leading-tight">{blog[0].data.title}</p>
-              <p class="text-[#8b949e] text-sm mt-2 line-clamp-2">{blog[0].data.description}</p>
+            <a href={`/blog/${blog[0].id}`} class="block h-full bg-[#141414] rounded-2xl border border-[#1e1e1e] overflow-hidden group hover:shadow-[0_0_30px_rgba(249,115,22,0.15)] transition-all duration-500 transform-gpu hover:rotate-y-2 hover:rotate-x-2">
+              <div class="h-full flex">
+                <div class="w-2/5 h-full overflow-hidden">
+                  <div class="w-full h-full bg-gradient-to-br from-orange-500/20 to-purple-500/20 grayscale group-hover:grayscale-0 transition-all duration-500"></div>
+                </div>
+                <div class="flex-1 p-5 flex flex-col">
+                  <span class="text-[10px] uppercase tracking-widest text-orange-500 mb-2">Latest Post</span>
+                  <p class="text-white font-bold text-lg leading-tight group-hover:text-orange-400 transition-colors">{blog[0].data.title}</p>
+                  <p class="text-[#555] text-xs mt-2 line-clamp-3">{blog[0].data.description}</p>
+                  <span class="mt-auto text-orange-500 text-xs opacity-0 group-hover:opacity-100 transition-opacity">Read more →</span>
+                </div>
+              </div>
             </a>
           )}
         </div>
 
-        <!-- Logo Card (2x1) -->
-        <div class="col-span-2 row-span-1 bg-[#141414] rounded-xl border border-[#252525] flex items-center justify-center hover:border-orange-500/30 transition-all duration-300">
-          <span class="text-white text-3xl font-bold tracking-tight">:wq!</span>
-        </div>
-
-        <!-- Scroll Toolbar (2x8) -->
-        <div class="col-span-2 row-span-8 bg-[#141414] rounded-xl border border-[#252525] p-4 flex flex-col">
-          <div class="h-1 bg-[#252525] rounded-full mb-8 overflow-hidden">
-            <div id="scroll-progress" class="h-full bg-gradient-to-r from-[#8b949e] to-orange-500 rounded-full transition-all duration-500" style="width: 15%"></div>
-          </div>
-          <div class="space-y-4 font-mono text-[11px]">
-            <button class="section-btn flex items-center gap-3 w-full text-left hover:translate-x-1 transition-transform" data-section="0">
-              <span class="text-white font-bold">01</span>
-              <span class="text-orange-500 uppercase tracking-wider">Discord</span>
-            </button>
-            <button class="section-btn flex items-center gap-3 w-full text-left hover:translate-x-1 transition-transform" data-section="1">
-              <span class="text-[#555]">02</span>
-              <span class="text-[#555] uppercase tracking-wider">Blog</span>
-            </button>
-            <button class="section-btn flex items-center gap-3 w-full text-left hover:translate-x-1 transition-transform" data-section="2">
-              <span class="text-[#555]">03</span>
-              <span class="text-[#555] uppercase tracking-wider">GitHub</span>
-            </button>
-            <button class="section-btn flex items-center gap-3 w-full text-left hover:translate-x-1 transition-transform" data-section="3">
-              <span class="text-[#555]">04</span>
-              <span class="text-[#555] uppercase tracking-wider">Chess</span>
-            </button>
-            <button class="section-btn flex items-center gap-3 w-full text-left hover:translate-x-1 transition-transform" data-section="4">
-              <span class="text-[#555]">05</span>
-              <span class="text-[#555] uppercase tracking-wider">Languages</span>
-            </button>
-            <button class="section-btn flex items-center gap-3 w-full text-left hover:translate-x-1 transition-transform" data-section="5">
-              <span class="text-[#555]">06</span>
-              <span class="text-[#555] uppercase tracking-wider">CTF</span>
-            </button>
-            <button class="section-btn flex items-center gap-3 w-full text-left hover:translate-x-1 transition-transform" data-section="6">
-              <span class="text-[#555]">07</span>
-              <span class="text-[#555] uppercase tracking-wider">Contact</span>
-            </button>
-          </div>
-        </div>
-
-        <!-- Nav Links (2x1) -->
-        <div class="col-span-2 row-span-1 bg-[#141414] rounded-xl border border-[#252525] flex items-center justify-center gap-5 text-[#8b949e] text-xs hover:border-orange-500/30 transition-all duration-300">
-          <a href="/" class="hover:text-white transition-colors">Home</a>
-          <a href="/blog" class="hover:text-white transition-colors">Blog</a>
-          <a href="/about" class="hover:text-white transition-colors">About</a>
-        </div>
-
-        <!-- ROW 2-3: GitHub Contributions (6x2) -->
-        <div class="col-span-6 row-span-2 bg-[#141414] rounded-xl border border-[#252525] p-4 overflow-hidden hover:border-orange-500/30 transition-all duration-300">
-          <GitHubContributions client:load username={GITHUB_USERNAME} />
-        </div>
-
-        <!-- Chess Card (2x2) -->
-        <div class="col-span-2 row-span-2 bg-[#141414] rounded-xl border border-[#252525] p-5 hover:border-orange-500/30 transition-all duration-300 group">
-          <a href="https://worldchess.com/profile/1015724" target="_blank" class="block h-full flex flex-col">
-            <svg class="w-10 h-10 text-[#8b949e] group-hover:text-white transition-colors" viewBox="0 0 24 24" fill="currentColor"><path d="M19 22H5v-2h14v2M17.16 8.26A8.94 8.94 0 0 0 21 2H3a8.94 8.94 0 0 0 3.84 6.26L4 12l2.5 2.5L8 20h8l1.5-5.5L20 12l-2.84-3.74z"/></svg>
-            <p class="text-white font-bold text-3xl mt-auto">1178</p>
-            <p class="text-[#8b949e] text-sm">Rapid Rating</p>
-            <p class="text-[#555] text-xs mt-1">27 games · 7% win</p>
-          </a>
-        </div>
-
-        <!-- ROW 4-5: Languages Card (4x2) -->
-        <div class="col-span-4 row-span-2 bg-[#141414] rounded-xl border border-[#252525] p-5 hover:border-orange-500/30 transition-all duration-300">
-          <p class="text-[#555] text-[10px] uppercase tracking-widest mb-4">Languages</p>
-          <div class="space-y-3">
-            <div class="flex items-center gap-3 group/item">
-              <span class="text-[#3572A5] font-mono text-xs w-6">py</span>
-              <div class="flex-1 h-2 bg-[#252525] rounded-full overflow-hidden">
-                <div class="h-full bg-[#8b949e] group-hover/item:bg-orange-500 rounded-full transition-colors" style="width: 85%"></div>
-              </div>
+        <!-- GitHub Contributions + Commits (3x2) -->
+        <div class="col-span-3 row-span-2 bg-[#141414] rounded-2xl border border-[#1e1e1e] p-5 overflow-hidden group hover:shadow-[0_0_30px_rgba(249,115,22,0.15)] transition-all duration-500">
+          <div class="h-full flex flex-col">
+            <div class="flex items-center justify-between mb-3">
+              <span class="text-[10px] uppercase tracking-widest text-[#555]">GitHub Activity</span>
+              <a href="https://github.com/colonwq" target="_blank" class="text-[#555] text-xs hover:text-orange-500 transition-colors">@colonwq →</a>
             </div>
-            <div class="flex items-center gap-3 group/item">
-              <span class="text-[#00ADD8] font-mono text-xs w-6">go</span>
-              <div class="flex-1 h-2 bg-[#252525] rounded-full overflow-hidden">
-                <div class="h-full bg-[#8b949e] group-hover/item:bg-orange-500 rounded-full transition-colors" style="width: 65%"></div>
-              </div>
-            </div>
-            <div class="flex items-center gap-3 group/item">
-              <span class="text-[#89e051] font-mono text-xs w-6">sh</span>
-              <div class="flex-1 h-2 bg-[#252525] rounded-full overflow-hidden">
-                <div class="h-full bg-[#8b949e] group-hover/item:bg-orange-500 rounded-full transition-colors" style="width: 45%"></div>
-              </div>
-            </div>
-            <div class="flex items-center gap-3 group/item">
-              <span class="text-[#555555] font-mono text-xs w-6">c</span>
-              <div class="flex-1 h-2 bg-[#252525] rounded-full overflow-hidden">
-                <div class="h-full bg-[#8b949e] group-hover/item:bg-orange-500 rounded-full transition-colors" style="width: 20%"></div>
-              </div>
+            <div class="flex-1 overflow-hidden grayscale group-hover:grayscale-0 transition-all duration-500">
+              <GitHubContributions client:load username={GITHUB_USERNAME} />
             </div>
           </div>
         </div>
 
-        <!-- CTFtime Card (2x2) -->
-        <div class="col-span-2 row-span-2 bg-[#141414] rounded-xl border border-[#252525] p-5 hover:border-orange-500/30 transition-all duration-300 group">
-          <a href="https://ctftime.org/user/233116" target="_blank" class="block h-full flex flex-col">
-            <div class="w-10 h-10 bg-[#d93025]/20 rounded-lg flex items-center justify-center mb-auto">
-              <span class="text-[#d93025] font-bold text-lg">CTF</span>
+        <!-- HackTheBox Profile Card (3x2) -->
+        <a href="https://app.hackthebox.com/users/writendquit" target="_blank" class="col-span-3 row-span-2 bg-[#141414] rounded-2xl border border-[#1e1e1e] p-5 group hover:shadow-[0_0_30px_rgba(249,115,22,0.15)] transition-all duration-500">
+          <div class="h-full flex flex-col grayscale group-hover:grayscale-0 transition-all duration-500">
+            <div class="flex items-center gap-3 mb-4">
+              <div class="w-12 h-12 rounded-lg bg-[#9fef00]/20 flex items-center justify-center group-hover:bg-[#9fef00]/30 transition-colors">
+                <svg class="w-8 h-8 text-[#9fef00]" viewBox="0 0 24 24" fill="currentColor"><path d="M11.996 0a1.119 1.119 0 00-.057.003c-.32.022-.581.238-.741.514-.071.12-.122.249-.173.377L6.108 11.057l-1.922-.962a.698.698 0 00-.312-.074.7.7 0 00-.622.378.695.695 0 00.062.75l4.268 5.455-3.621 4.594a.693.693 0 00.112.971.698.698 0 00.986-.113l4.027-5.078 4.027 5.078a.697.697 0 00.986.113.693.693 0 00.112-.971l-3.621-4.594 4.268-5.455a.695.695 0 00.062-.75.7.7 0 00-.622-.378.698.698 0 00-.312.074l-1.922.962L7.246.894c-.051-.128-.102-.257-.173-.377-.16-.276-.421-.492-.741-.514A1.119 1.119 0 0011.996 0z"/></svg>
+              </div>
+              <div>
+                <p class="text-white font-bold">HackTheBox</p>
+                <p class="text-[#9fef00] text-xs">Hacker Rank</p>
+              </div>
             </div>
-            <p class="text-white font-bold text-xl">CTFtime</p>
-            <p class="text-[#8b949e] text-sm">Team :wq!</p>
-            <p class="text-[#555] text-xs mt-1">View profile →</p>
-          </a>
+            <div class="grid grid-cols-3 gap-2 mt-auto">
+              <div class="bg-[#1e1e1e] rounded-lg p-2 text-center">
+                <p class="text-white font-bold text-lg">--</p>
+                <p class="text-[#555] text-[10px]">Rank</p>
+              </div>
+              <div class="bg-[#1e1e1e] rounded-lg p-2 text-center">
+                <p class="text-white font-bold text-lg">--</p>
+                <p class="text-[#555] text-[10px]">Owns</p>
+              </div>
+              <div class="bg-[#1e1e1e] rounded-lg p-2 text-center">
+                <p class="text-white font-bold text-lg">--</p>
+                <p class="text-[#555] text-[10px]">Flags</p>
+              </div>
+            </div>
+          </div>
+        </a>
+
+        <!-- CTFtime Profile (2x2) -->
+        <a href="https://ctftime.org/user/233116" target="_blank" class="col-span-2 row-span-2 bg-[#141414] rounded-2xl border border-[#1e1e1e] p-5 group hover:shadow-[0_0_30px_rgba(249,115,22,0.15)] transition-all duration-500">
+          <div class="h-full flex flex-col grayscale group-hover:grayscale-0 transition-all duration-500">
+            <div class="w-10 h-10 rounded-lg bg-[#d93025]/20 flex items-center justify-center mb-3">
+              <span class="text-[#d93025] font-bold">🚩</span>
+            </div>
+            <p class="text-white font-bold">ctftime.org</p>
+            <p class="text-[#555] text-xs mt-1">User #233116</p>
+            <p class="text-[#555] text-xs">Team: :wq!</p>
+            <div class="mt-auto flex flex-wrap gap-1">
+              <span class="px-2 py-0.5 bg-[#1e1e1e] rounded text-[10px] text-[#8b949e]">misc</span>
+              <span class="px-2 py-0.5 bg-[#1e1e1e] rounded text-[10px] text-[#8b949e]">web</span>
+              <span class="px-2 py-0.5 bg-[#1e1e1e] rounded text-[10px] text-[#8b949e]">pwn</span>
+            </div>
+          </div>
+        </a>
+
+        <!-- Languages Card (5x2) -->
+        <div class="col-span-5 row-span-2 bg-[#141414] rounded-2xl border border-[#1e1e1e] p-5 group hover:shadow-[0_0_30px_rgba(249,115,22,0.15)] transition-all duration-500">
+          <span class="text-[10px] uppercase tracking-widest text-[#555]">Languages & Tools</span>
+          <div class="mt-4 space-y-3">
+            <div class="flex items-center gap-4 group/lang">
+              <svg class="w-6 h-6 text-[#3572A5] grayscale group-hover/lang:grayscale-0 group-hover/lang:text-orange-500 transition-all" viewBox="0 0 24 24" fill="currentColor"><path d="M14.31.18l.9.2.73.26.59.3.45.32.34.34.25.34.16.33.1.3.04.26.02.2-.01.13V8.5l-.05.63-.13.55-.21.46-.26.38-.3.31-.33.25-.35.19-.35.14-.33.1-.3.07-.26.04-.21.02H8.83l-.69.05-.59.14-.5.22-.41.27-.33.32-.27.35-.2.36-.15.37-.1.35-.07.32-.04.27-.02.21v3.06H3.23l-.21-.03-.28-.07-.32-.12-.35-.18-.36-.26-.36-.36-.35-.46-.32-.59-.28-.73-.21-.88-.14-1.05L0 11.97l.06-1.22.16-1.04.24-.87.32-.71.36-.57.4-.44.42-.33.42-.24.4-.16.36-.1.32-.05.24-.01h.16l.06.01h8.16v-.83H6.24l-.01-2.75-.02-.37.05-.34.11-.31.17-.28.25-.26.31-.23.38-.2.44-.18.51-.15.58-.12.64-.1.71-.06.77-.04.84-.02 1.27.05zm-6.3 1.09l-.28.27-.21.33-.14.39-.1.45-.06.52-.03.59v.79l.02.59.05.52.1.45.14.39.21.33.28.27.35.21.42.13.49.06.56-.01.63-.09.69-.17.72-.27.7-.37.63-.48.52-.59.35-.69.14-.78-.08-.86-.31-.93-.51-.97-.68-.99-.81-.97-.9-.92-.96-.84-.99-.73-1-.6-1-.47-.97-.35-.93-.24-.87-.14-.81-.06-.74 0-.68.05-.61.1-.55.14-.49.17-.43.2-.37.22-.32.23-.27.24-.22.24-.18.24-.14.24-.11.23-.08.22-.05.2-.04.2-.01.17.01.12.02.09.04.07.05.05.06.04.06.03.06.02.06.01.06.01h.05z"/></svg>
+              <span class="text-white text-sm w-16">Python</span>
+              <div class="flex-1 h-2 bg-[#1e1e1e] rounded-full overflow-hidden">
+                <div class="h-full bg-[#555] group-hover/lang:bg-orange-500 rounded-full transition-all duration-500" style="width: 85%"></div>
+              </div>
+              <span class="text-[#555] text-xs font-mono w-16 text-right group-hover/lang:text-orange-500 transition-colors">941h</span>
+            </div>
+            <div class="flex items-center gap-4 group/lang">
+              <svg class="w-6 h-6 text-[#00ADD8] grayscale group-hover/lang:grayscale-0 group-hover/lang:text-orange-500 transition-all" viewBox="0 0 24 24" fill="currentColor"><path d="M1.811 10.231c-.047 0-.058-.023-.035-.059l.246-.315c.023-.035.081-.058.128-.058h4.172c.046 0 .058.035.035.07l-.199.303c-.023.036-.082.07-.117.07zM.047 11.306c-.047 0-.059-.023-.035-.058l.245-.316c.023-.035.082-.058.129-.058h5.328c.047 0 .07.035.058.07l-.093.28c-.012.047-.058.07-.105.07zm2.828 1.075c-.047 0-.059-.035-.035-.07l.163-.292c.023-.035.07-.07.117-.07h2.337c.047 0 .07.035.07.082l-.023.28c0 .047-.047.082-.082.082zm12.129-2.36c-.736.187-1.239.327-1.963.514-.176.046-.187.058-.34-.117-.174-.199-.303-.327-.548-.444-.737-.362-1.45-.257-2.115.175-.795.514-1.204 1.274-1.192 2.22.011.935.654 1.706 1.577 1.835.795.105 1.46-.175 1.987-.771.105-.13.198-.27.315-.434H10.47c-.245 0-.304-.152-.222-.35.152-.362.432-.97.596-1.274a.315.315 0 01.292-.187h4.253c-.023.316-.023.631-.07.947a4.983 4.983 0 01-.958 2.29c-.841 1.11-1.94 1.8-3.33 1.986-1.145.152-2.209-.07-3.143-.77-.865-.655-1.356-1.52-1.484-2.595-.152-1.274.222-2.419.993-3.424.83-1.086 1.928-1.776 3.272-2.02 1.098-.2 2.15-.07 3.096.571.62.41 1.063.97 1.356 1.648.07.105.023.164-.117.2z"/></svg>
+              <span class="text-white text-sm w-16">Go</span>
+              <div class="flex-1 h-2 bg-[#1e1e1e] rounded-full overflow-hidden">
+                <div class="h-full bg-[#555] group-hover/lang:bg-orange-500 rounded-full transition-all duration-500" style="width: 65%"></div>
+              </div>
+              <span class="text-[#555] text-xs font-mono w-16 text-right group-hover/lang:text-orange-500 transition-colors">678h</span>
+            </div>
+            <div class="flex items-center gap-4 group/lang">
+              <svg class="w-6 h-6 text-[#89e051] grayscale group-hover/lang:grayscale-0 group-hover/lang:text-orange-500 transition-all" viewBox="0 0 24 24" fill="currentColor"><path d="M4 20h4v-8H4v8zm6 0h4v-16h-4v16zm6 0h4v-12h-4v12z"/></svg>
+              <span class="text-white text-sm w-16">Shell</span>
+              <div class="flex-1 h-2 bg-[#1e1e1e] rounded-full overflow-hidden">
+                <div class="h-full bg-[#555] group-hover/lang:bg-orange-500 rounded-full transition-all duration-500" style="width: 45%"></div>
+              </div>
+              <span class="text-[#555] text-xs font-mono w-16 text-right group-hover/lang:text-orange-500 transition-colors">421h</span>
+            </div>
+            <div class="flex items-center gap-4 group/lang">
+              <svg class="w-6 h-6 text-[#555555] grayscale group-hover/lang:grayscale-0 group-hover/lang:text-orange-500 transition-all" viewBox="0 0 24 24" fill="currentColor"><path d="M16.5921 9.1962s-.354-3.298-3.627-3.39c-3.2741-.09-4.9552 2.474-4.9552 6.14 0 3.6651 1.858 6.5972 5.0451 6.5972 3.184 0 3.5381-3.665 3.5381-3.665l3.272.366s.625 6.685-6.79 6.685c-7.414 0-8.9-5.855-8.9-9.895C4.1832 7.362 6.8622.5765 14.049.5765c7.186 0 5.8131 8.6197 5.8131 8.6197z"/></svg>
+              <span class="text-white text-sm w-16">C</span>
+              <div class="flex-1 h-2 bg-[#1e1e1e] rounded-full overflow-hidden">
+                <div class="h-full bg-[#555] group-hover/lang:bg-orange-500 rounded-full transition-all duration-500" style="width: 20%"></div>
+              </div>
+              <span class="text-[#555] text-xs font-mono w-16 text-right group-hover/lang:text-orange-500 transition-colors">184h</span>
+            </div>
+          </div>
         </div>
 
-        <!-- HTB Card (2x2) -->
-        <div class="col-span-2 row-span-2 bg-[#141414] rounded-xl border border-[#252525] p-5 hover:border-orange-500/30 transition-all duration-300 group">
-          <a href="https://app.hackthebox.com" target="_blank" class="block h-full flex flex-col">
-            <div class="w-10 h-10 bg-[#9fef00]/20 rounded-lg flex items-center justify-center mb-auto">
-              <span class="text-[#9fef00] font-bold text-sm">HTB</span>
-            </div>
-            <p class="text-white font-bold text-xl">HackTheBox</p>
-            <p class="text-[#8b949e] text-sm">Active Player</p>
-            <p class="text-[#555] text-xs mt-1">View profile →</p>
-          </a>
-        </div>
-
-        <!-- ROW 6-7: Blog Posts Grid (4x2) -->
-        <div class="col-span-4 row-span-2 bg-[#141414] rounded-xl border border-[#252525] p-5 hover:border-orange-500/30 transition-all duration-300">
-          <p class="text-[#555] text-[10px] uppercase tracking-widest mb-4">Recent Writeups</p>
-          <div class="space-y-3">
-            {blog.slice(0, 3).map((post, i) => (
-              <a href={`/blog/${post.id}`} class="block group/post">
-                <div class="flex items-center gap-3">
-                  <span class="text-[#555] font-mono text-xs">0{i + 1}</span>
-                  <p class="text-[#8b949e] text-sm group-hover/post:text-white transition-colors truncate">{post.data.title}</p>
-                </div>
+        <!-- Recent Writeups - 3D Cards (5x2) -->
+        <div class="col-span-5 row-span-2 bg-[#141414] rounded-2xl border border-[#1e1e1e] p-5 group hover:shadow-[0_0_30px_rgba(249,115,22,0.15)] transition-all duration-500">
+          <span class="text-[10px] uppercase tracking-widest text-[#555]">Recent Writeups</span>
+          <div class="mt-4 grid grid-cols-3 gap-3">
+            {blog.slice(0, 3).map((post) => (
+              <a href={`/blog/${post.id}`} class="block bg-[#1e1e1e] rounded-xl p-3 group/card hover:bg-[#252525] hover:shadow-[0_0_20px_rgba(249,115,22,0.1)] transition-all duration-300 transform-gpu hover:-translate-y-1 hover:rotate-1">
+                <div class="w-full h-16 bg-gradient-to-br from-orange-500/10 to-purple-500/10 rounded-lg mb-2 grayscale group-hover/card:grayscale-0 transition-all"></div>
+                <p class="text-white text-xs font-medium line-clamp-2 group-hover/card:text-orange-400 transition-colors">{post.data.title}</p>
               </a>
             ))}
           </div>
-          <a href="/blog" class="text-orange-500 text-xs mt-4 inline-block hover:underline">View all →</a>
         </div>
 
-        <!-- Profile Picture Card (2x2) -->
-        <div class="col-span-2 row-span-2 bg-[#141414] rounded-xl border border-[#252525] overflow-hidden hover:border-orange-500/30 transition-all duration-300 group">
-          <img src="/writendquit.jpg" alt="Profile" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500" />
+        <!-- Profile Picture (2x2) -->
+        <div class="col-span-2 row-span-2 bg-[#141414] rounded-2xl border border-[#1e1e1e] overflow-hidden group hover:shadow-[0_0_30px_rgba(249,115,22,0.15)] transition-all duration-500">
+          <img src="/writendquit.jpg" alt="Profile" class="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-500" />
         </div>
 
-        <!-- Contact Card (2x2) -->
-        <div class="col-span-2 row-span-2 bg-[#141414] rounded-xl border border-[#252525] p-5 hover:border-orange-500/30 transition-all duration-300 flex flex-col justify-center items-center text-center">
-          <p class="text-[#555] text-[10px] uppercase tracking-widest mb-2">Get in touch</p>
-          <p class="text-white font-bold text-lg mb-3">Let's Connect</p>
-          <a href="mailto:contact@wq.dev" class="px-4 py-2 bg-orange-500 text-white text-xs font-medium rounded hover:bg-orange-600 transition-colors">
-            Contact Me
-          </a>
+        <!-- Contact Card (3x1) -->
+        <a href="mailto:writendquit@gmail.com" class="col-span-3 row-span-1 bg-[#141414] rounded-2xl border border-[#1e1e1e] p-5 flex items-center gap-4 group hover:shadow-[0_0_30px_rgba(249,115,22,0.15)] transition-all duration-500">
+          <div class="w-10 h-10 rounded-full bg-orange-500/20 flex items-center justify-center group-hover:bg-orange-500/30 transition-colors">
+            <svg class="w-5 h-5 text-orange-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+          </div>
+          <div>
+            <p class="text-[#555] text-[10px] uppercase tracking-widest">Get in touch</p>
+            <p class="text-white text-sm group-hover:text-orange-400 transition-colors">writendquit@gmail.com</p>
+          </div>
+        </a>
+
+        <!-- Chess Card (2x1) -->
+        <a href="https://worldchess.com/profile/1015724" target="_blank" class="col-span-2 row-span-1 bg-[#141414] rounded-2xl border border-[#1e1e1e] p-4 flex items-center gap-3 group hover:shadow-[0_0_30px_rgba(249,115,22,0.15)] transition-all duration-500">
+          <svg class="w-8 h-8 text-[#555] grayscale group-hover:grayscale-0 group-hover:text-orange-500 transition-all" viewBox="0 0 24 24" fill="currentColor"><path d="M19 22H5v-2h14v2M17.16 8.26A8.94 8.94 0 0 0 21 2H3a8.94 8.94 0 0 0 3.84 6.26L4 12l2.5 2.5L8 20h8l1.5-5.5L20 12l-2.84-3.74z"/></svg>
+          <div>
+            <p class="text-white font-bold">1178</p>
+            <p class="text-[#555] text-xs">Chess Rating</p>
+          </div>
+        </a>
+
+        <!-- Quote (5x1) -->
+        <div class="col-span-5 row-span-1 bg-[#141414] rounded-2xl border border-[#1e1e1e] p-5 flex items-center">
+          <p class="text-[#555] text-sm italic">"Security is not a product, but a process."</p>
+          <span class="text-[#333] text-xs ml-auto">— Bruce Schneier</span>
         </div>
 
-        <!-- ROW 8: Quote Card (6x1) -->
-        <div class="col-span-6 row-span-1 bg-[#141414] rounded-xl border border-[#252525] p-5 hover:border-orange-500/30 transition-all duration-300 flex items-center">
-          <p class="text-[#8b949e] text-sm italic">"Security is not a product, but a process."</p>
-          <span class="text-[#555] text-xs ml-auto">— Bruce Schneier</span>
-        </div>
+      </div>
 
-        <!-- Social Links (2x1) -->
-        <div class="col-span-2 row-span-1 bg-[#141414] rounded-xl border border-[#252525] flex items-center justify-center gap-4 hover:border-orange-500/30 transition-all duration-300">
-          <a href="https://github.com/writendquit" target="_blank" class="text-[#8b949e] hover:text-white transition-colors">
-            <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
-          </a>
-          <a href="https://x.com/writendquit" target="_blank" class="text-[#8b949e] hover:text-white transition-colors">
-            <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
-          </a>
-          <a href="https://ctftime.org/user/233116" target="_blank" class="text-[#8b949e] hover:text-white transition-colors">
-            <span class="text-xs font-bold">CTF</span>
-          </a>
+      <!-- RIGHT TOOLBAR - Factory.ai style -->
+      <div class="w-48 flex-shrink-0">
+        <div class="sticky top-24 bg-[#141414] rounded-2xl border border-[#1e1e1e] p-5">
+          <!-- Progress Bar -->
+          <div class="h-1 bg-[#1e1e1e] rounded-full mb-8 overflow-hidden">
+            <div id="scroll-progress" class="h-full bg-gradient-to-r from-[#555] to-orange-500 rounded-full transition-all duration-500" style="width: 15%"></div>
+          </div>
+          
+          <!-- Section List -->
+          <div class="space-y-4">
+            <button class="section-btn flex items-center gap-3 w-full text-left group" data-section="0">
+              <span class="text-white font-bold text-xs">01</span>
+              <span class="text-orange-500 text-xs uppercase tracking-wider">Discord</span>
+            </button>
+            <button class="section-btn flex items-center gap-3 w-full text-left group" data-section="1">
+              <span class="text-[#333] text-xs">02</span>
+              <span class="text-[#333] text-xs uppercase tracking-wider">Blog</span>
+            </button>
+            <button class="section-btn flex items-center gap-3 w-full text-left group" data-section="2">
+              <span class="text-[#333] text-xs">03</span>
+              <span class="text-[#333] text-xs uppercase tracking-wider">GitHub</span>
+            </button>
+            <button class="section-btn flex items-center gap-3 w-full text-left group" data-section="3">
+              <span class="text-[#333] text-xs">04</span>
+              <span class="text-[#333] text-xs uppercase tracking-wider">HackTheBox</span>
+            </button>
+            <button class="section-btn flex items-center gap-3 w-full text-left group" data-section="4">
+              <span class="text-[#333] text-xs">05</span>
+              <span class="text-[#333] text-xs uppercase tracking-wider">CTFtime</span>
+            </button>
+            <button class="section-btn flex items-center gap-3 w-full text-left group" data-section="5">
+              <span class="text-[#333] text-xs">06</span>
+              <span class="text-[#333] text-xs uppercase tracking-wider">Languages</span>
+            </button>
+            <button class="section-btn flex items-center gap-3 w-full text-left group" data-section="6">
+              <span class="text-[#333] text-xs">07</span>
+              <span class="text-[#333] text-xs uppercase tracking-wider">Contact</span>
+            </button>
+          </div>
         </div>
-
       </div>
     </div>
 
@@ -520,20 +550,34 @@ const GITHUB_USERNAME = 'writendquit'
             const spans = btn.querySelectorAll('span');
             if (i === index) {
               spans[0].classList.add('text-white', 'font-bold');
-              spans[0].classList.remove('text-[#555]');
+              spans[0].classList.remove('text-[#333]');
               spans[1].classList.add('text-orange-500');
-              spans[1].classList.remove('text-[#555]');
+              spans[1].classList.remove('text-[#333]');
             } else {
               spans[0].classList.remove('text-white', 'font-bold');
-              spans[0].classList.add('text-[#555]');
+              spans[0].classList.add('text-[#333]');
               spans[1].classList.remove('text-orange-500');
-              spans[1].classList.add('text-[#555]');
+              spans[1].classList.add('text-[#333]');
             }
           });
         }
 
         sectionBtns.forEach((btn, i) => {
           btn.addEventListener('click', () => updateSection(i));
+        });
+
+        // Scroll-based section detection
+        const bentoSection = document.getElementById('bento-section');
+        let scrollTimeout: ReturnType<typeof setTimeout>;
+        bentoSection?.addEventListener('wheel', (e) => {
+          clearTimeout(scrollTimeout);
+          scrollTimeout = setTimeout(() => {
+            if (e.deltaY > 0 && currentIndex < totalSections - 1) {
+              updateSection(currentIndex + 1);
+            } else if (e.deltaY < 0 && currentIndex > 0) {
+              updateSection(currentIndex - 1);
+            }
+          }, 100);
         });
 
         updateSection(0);
