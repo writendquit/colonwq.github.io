@@ -293,257 +293,222 @@ const GITHUB_USERNAME = 'writendquit'
     </div>
   </section>
 
-  <!-- ===== TECH STACK SECTION ===== -->
-  <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 border-t border-border">
-    <div class="grid lg:grid-cols-[280px_1fr] gap-12">
-      <!-- LEFT SIDEBAR -->
-      <div class="lg:sticky lg:top-24 lg:self-start">
-        <div class="flex items-center gap-2 mb-6">
-          <div class="w-1.5 h-1.5 bg-orange-500 rounded-full orange-dot"></div>
-          <span class="text-[11px] font-medium tracking-[0.2em] uppercase">Tech Stack</span>
-        </div>
+  <!-- ===== BENTO GRID SECTION ===== -->
+  <section id="bento-section" class="bg-[#0a0a0a] min-h-screen relative">
+    <div class="flex">
+      <!-- MAIN BENTO GRID -->
+      <div class="flex-1 p-4 grid grid-cols-12 grid-rows-6 gap-3 min-h-screen">
         
-        <h2 class="text-[2rem] sm:text-[2.5rem] font-bold leading-[1.1] tracking-[-0.02em] mb-4">
-          Technical<br/>Arsenal
-        </h2>
-        
-        <p class="text-muted-foreground text-[14px] leading-relaxed mb-8">
-          From reverse engineering binaries to jailbreaking AI models. Security research, CTF competitions, and chess in between.
-        </p>
-
-        <!-- Vertical Tab Navigation -->
-        <div class="flex flex-col gap-1">
-        <button id="tab-github" class="tab-btn w-full text-left px-4 py-3 text-sm font-medium rounded-md bg-foreground text-background transition-all" data-tab="github">
-          <span class="flex items-center gap-3">
-            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
-            GitHub
-          </span>
-        </button>
-        <button id="tab-chess" class="tab-btn w-full text-left px-4 py-3 text-sm font-medium rounded-md text-muted-foreground hover:text-foreground hover:bg-muted/50 transition-all" data-tab="chess">
-          <span class="flex items-center gap-3">
-            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor"><path d="M19 22H5v-2h14v2M17.16 8.26A8.94 8.94 0 0 0 21 2H3a8.94 8.94 0 0 0 3.84 6.26L4 12l2.5 2.5L8 20h8l1.5-5.5L20 12l-2.84-3.74z"/></svg>
-            Chess
-          </span>
-        </button>
-        <button id="tab-discord" class="tab-btn w-full text-left px-4 py-3 text-sm font-medium rounded-md text-muted-foreground hover:text-foreground hover:bg-muted/50 transition-all" data-tab="discord">
-          <span class="flex items-center gap-3">
-            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor"><path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028 14.09 14.09 0 0 0 1.226-1.994.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03z"/></svg>
-            Discord
-          </span>
-        </button>
-        <button id="tab-skills" class="tab-btn w-full text-left px-4 py-3 text-sm font-medium rounded-md text-muted-foreground hover:text-foreground hover:bg-muted/50 transition-all" data-tab="skills">
-          <span class="flex items-center gap-3">
-            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
-            Skills
-          </span>
-        </button>
-        <button id="tab-blog" class="tab-btn w-full text-left px-4 py-3 text-sm font-medium rounded-md text-muted-foreground hover:text-foreground hover:bg-muted/50 transition-all" data-tab="blog">
-          <span class="flex items-center gap-3">
-            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"/></svg>
-            Blog
-          </span>
-        </button>
-        </div>
-      </div>
-
-      <!-- MAIN CONTENT AREA -->
-      <div class="flex-1">
-        <!-- Tab Content Panels -->
-        <div id="tab-content" class="min-h-[400px]">
-      <!-- GitHub Panel -->
-      <div id="panel-github" class="tab-panel">
-        <GitHubContributions client:load username={GITHUB_USERNAME} />
-      </div>
-
-      <!-- Chess Panel -->
-      <div id="panel-chess" class="tab-panel hidden">
-        <div class="bg-[#0d1117] rounded-2xl border border-[#30363d] overflow-hidden">
-          <div class="px-6 py-5 border-b border-[#30363d] flex items-center justify-between">
-            <div class="flex items-center gap-3">
-              <svg class="w-8 h-8 text-white" viewBox="0 0 24 24" fill="currentColor"><path d="M19 22H5v-2h14v2M17.16 8.26A8.94 8.94 0 0 0 21 2H3a8.94 8.94 0 0 0 3.84 6.26L4 12l2.5 2.5L8 20h8l1.5-5.5L20 12l-2.84-3.74z"/></svg>
-              <div>
-                <h3 class="text-white font-semibold text-lg">:wq! KISHORE</h3>
-                <p class="text-[#8b949e] text-sm">World Chess · Indian Chess Federation</p>
-              </div>
-            </div>
-            <a href="https://worldchess.com/profile/1015724" target="_blank" class="text-white text-sm hover:underline">View Profile</a>
+        <!-- Discord Card - Top Left (3x2) -->
+        <div class="col-span-3 row-span-2 bg-[#141414] rounded-xl border border-[#252525] p-4 flex flex-col hover:border-orange-500/30 transition-colors bento-card" data-index="0">
+          <div class="flex items-center gap-2 mb-3">
+            <img src="/discord-profile.png" alt="Discord" class="w-12 h-12 rounded-full grayscale hover:grayscale-0 transition-all" />
+            <span class="text-[#8b949e] text-xs">●●●●●●</span>
           </div>
-          <div class="grid grid-cols-4 border-b border-[#30363d]">
-            <div class="px-6 py-4 border-r border-[#30363d]">
-              <p class="text-[#8b949e] text-xs uppercase tracking-wider mb-1">Games</p>
-              <p class="text-white text-2xl font-bold">27</p>
+          <div class="mt-auto">
+            <p class="text-white font-semibold">writendquit</p>
+            <p class="text-[#8b949e] text-xs">@writendquit</p>
+            <div class="mt-2 bg-[#5865F2]/20 rounded px-2 py-1 text-xs text-[#5865F2] inline-block">
+              No status
             </div>
-            <div class="px-6 py-4 border-r border-[#30363d]">
-              <p class="text-[#8b949e] text-xs uppercase tracking-wider mb-1">Time Spent</p>
-              <p class="text-white text-2xl font-bold">2h 22m</p>
-            </div>
-            <div class="px-6 py-4 border-r border-[#30363d]">
-              <p class="text-[#8b949e] text-xs uppercase tracking-wider mb-1">Win Rate</p>
-              <p class="text-white text-2xl font-bold">7%</p>
-            </div>
-            <div class="px-6 py-4">
-              <p class="text-[#8b949e] text-xs uppercase tracking-wider mb-1">Accuracy</p>
-              <p class="text-white text-2xl font-bold">66%</p>
-            </div>
-          </div>
-          <div class="p-6">
-            <div class="grid grid-cols-2 gap-6">
-              <div>
-                <p class="text-[#8b949e] text-sm mb-2">Rating (Rapid)</p>
-                <p class="text-white text-4xl font-bold">1178</p>
-                <p class="text-[#8b949e] text-sm mt-1">2 games played</p>
-              </div>
-              <div>
-                <p class="text-[#8b949e] text-sm mb-2">Activity</p>
-                <div class="flex gap-4">
-                  <div><span class="text-white font-bold">2</span> <span class="text-[#8b949e]">wins</span></div>
-                  <div><span class="text-white font-bold">25</span> <span class="text-[#8b949e]">losses</span></div>
-                  <div><span class="text-white font-bold">0</span> <span class="text-[#8b949e]">draws</span></div>
-                </div>
-              </div>
-            </div>
-            <div class="mt-6 pt-6 border-t border-[#30363d]">
-              <p class="text-[#8b949e] text-sm mb-2">Member of</p>
-              <p class="text-white">Harvard Chess Club · Since Aug 2025</p>
-            </div>
+            <p class="text-[#8b949e] text-[10px] mt-1">I'm probably sleeping...<br/>Enjoy your stay!<br/>>:00 elapsed</p>
           </div>
         </div>
-      </div>
 
-      <!-- Discord Panel -->
-      <div id="panel-discord" class="tab-panel hidden">
-        <div class="bg-[#0d1117] rounded-2xl border border-[#30363d] overflow-hidden p-6">
-          <div class="flex items-center gap-4 mb-6">
-            <img src="/discord-profile.png" alt="Discord Profile" class="w-48 rounded-lg grayscale hover:grayscale-0 hover:shadow-[0_0_20px_rgba(249,115,22,0.5)] transition-all duration-300" />
-            <div>
-              <h3 class="text-white font-semibold text-xl">:wq!</h3>
-              <p class="text-[#8b949e]">writendquit</p>
-              <p class="text-[#8b949e] text-sm mt-2">Let's play a game :)</p>
-            </div>
-          </div>
-          <div class="grid grid-cols-3 gap-4">
-            <div class="bg-[#161b22] rounded-lg p-4">
-              <p class="text-[#8b949e] text-xs uppercase mb-1">Status</p>
-              <p class="text-white font-medium">Online</p>
-            </div>
-            <div class="bg-[#161b22] rounded-lg p-4">
-              <p class="text-[#8b949e] text-xs uppercase mb-1">Playing</p>
-              <p class="text-white font-medium">Z.ai</p>
-            </div>
-            <div class="bg-[#161b22] rounded-lg p-4">
-              <p class="text-[#8b949e] text-xs uppercase mb-1">Badges</p>
-              <p class="text-white font-medium">4+</p>
-            </div>
-          </div>
+        <!-- Featured Blog Post - Top Center (5x2) -->
+        <div class="col-span-5 row-span-2 bg-[#141414] rounded-xl border border-[#252525] overflow-hidden hover:border-orange-500/30 transition-colors bento-card" data-index="1">
+          {blog[0] && (
+            <a href={`/blog/${blog[0].id}`} class="block h-full relative group">
+              <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent z-10"></div>
+              <div class="absolute top-4 right-4 z-20">
+                <span class="text-white/60 text-2xl">✦</span>
+              </div>
+              <div class="absolute bottom-4 left-4 right-4 z-20">
+                <p class="text-white font-bold text-lg">{blog[0].data.title}</p>
+                <p class="text-[#8b949e] text-xs mt-1">{blog[0].data.description}</p>
+              </div>
+              <div class="absolute bottom-4 right-4 z-20 opacity-0 group-hover:opacity-100 transition-opacity">
+                <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+                </svg>
+              </div>
+            </a>
+          )}
         </div>
-      </div>
 
-      <!-- Skills Panel -->
-      <div id="panel-skills" class="tab-panel hidden">
-        <div class="bg-[#0d1117] rounded-2xl border border-[#30363d] p-6">
-          <p class="text-[#8b949e] text-[10px] uppercase tracking-widest mb-6">Languages</p>
-          <div class="space-y-4">
-            <div class="flex items-center justify-between group">
-              <div class="flex items-center gap-3">
-                <span class="text-[#3572A5] group-hover:text-orange-400 transition-colors font-mono text-xs">py</span>
-                <span class="text-white text-sm">Python</span>
-              </div>
+        <!-- Logo Card - Top Right (2x1) -->
+        <div class="col-span-2 row-span-1 bg-[#141414] rounded-xl border border-[#252525] flex items-center justify-center hover:border-orange-500/30 transition-colors bento-card" data-index="2">
+          <span class="text-white text-4xl font-bold">:wq!</span>
+        </div>
+
+        <!-- Nav Card - Below Logo (2x1) -->
+        <div class="col-span-2 row-span-1 bg-[#141414] rounded-xl border border-[#252525] flex items-center justify-center gap-4 text-[#8b949e] text-xs hover:border-orange-500/30 transition-colors bento-card" data-index="3">
+          <a href="/" class="hover:text-white transition-colors">Home</a>
+          <a href="/blog" class="hover:text-white transition-colors">Blog</a>
+          <a href="/about" class="hover:text-white transition-colors">About</a>
+        </div>
+
+        <!-- Scroll Indicator - Far Right (2x6) -->
+        <div class="col-span-2 row-span-6 bg-[#141414] rounded-xl border border-[#252525] p-4 flex flex-col hover:border-orange-500/30 transition-colors bento-card" data-index="4">
+          <div class="flex-1 flex flex-col justify-center">
+            <!-- Scroll Progress Bar -->
+            <div class="h-1 bg-[#252525] rounded-full mb-6 overflow-hidden">
+              <div id="scroll-progress" class="h-full bg-gradient-to-r from-[#8b949e] to-orange-500 rounded-full transition-all duration-300" style="width: 20%"></div>
             </div>
-            <div class="flex items-center justify-between group">
-              <div class="flex items-center gap-3">
-                <span class="text-[#00ADD8] group-hover:text-orange-400 transition-colors font-mono text-xs">go</span>
-                <span class="text-white text-sm">Go</span>
+            <!-- Section List -->
+            <div class="space-y-3 font-mono text-xs">
+              <div class="flex items-center gap-2 section-indicator" data-section="0">
+                <span class="text-[#8b949e]">01</span>
+                <span class="text-[#8b949e]">DISCORD</span>
               </div>
-            </div>
-            <div class="flex items-center justify-between group">
-              <div class="flex items-center gap-3">
-                <span class="text-[#89e051] group-hover:text-orange-400 transition-colors font-mono text-xs">sh</span>
-                <span class="text-white text-sm">Shell</span>
+              <div class="flex items-center gap-2 section-indicator" data-section="1">
+                <span class="text-[#8b949e]">02</span>
+                <span class="text-[#8b949e]">BLOG</span>
               </div>
-            </div>
-            <div class="flex items-center justify-between group">
-              <div class="flex items-center gap-3">
-                <span class="text-[#555555] group-hover:text-orange-400 transition-colors font-mono text-xs">c</span>
-                <span class="text-white text-sm">C</span>
+              <div class="flex items-center gap-2 section-indicator" data-section="2">
+                <span class="text-[#8b949e]">03</span>
+                <span class="text-[#8b949e]">GITHUB</span>
               </div>
-            </div>
-            <div class="flex items-center justify-between group">
-              <div class="flex items-center gap-3">
-                <span class="text-[#701516] group-hover:text-orange-400 transition-colors font-mono text-xs">rb</span>
-                <span class="text-white text-sm">Ruby</span>
+              <div class="flex items-center gap-2 section-indicator" data-section="3">
+                <span class="text-[#8b949e]">04</span>
+                <span class="text-[#8b949e]">CHESS</span>
               </div>
-            </div>
-            <div class="flex items-center justify-between group">
-              <div class="flex items-center gap-3">
-                <span class="text-[#0298c3] group-hover:text-orange-400 transition-colors font-mono text-xs">pl</span>
-                <span class="text-white text-sm">Perl</span>
-              </div>
-            </div>
-            <div class="flex items-center justify-between group">
-              <div class="flex items-center gap-3">
-                <span class="text-[#ff5a03] group-hover:text-orange-400 transition-colors font-mono text-xs">astro</span>
-                <span class="text-white text-sm">Astro</span>
+              <div class="flex items-center gap-2 section-indicator active" data-section="4">
+                <span class="text-white font-bold">05</span>
+                <span class="text-orange-500">LANGUAGES</span>
               </div>
             </div>
           </div>
         </div>
-      </div>
 
-      <!-- Blog Panel -->
-      <div id="panel-blog" class="tab-panel hidden">
-        <div class="bg-[#0d1117] rounded-2xl border border-[#30363d] overflow-hidden p-6">
-          <h3 class="text-white font-semibold text-lg mb-6">Recent Writeups & Posts</h3>
-          <div class="space-y-4">
-            {blog.slice(0, 4).map((post) => (
-              <a href={`/blog/${post.id}`} class="block bg-[#161b22] rounded-lg p-4 hover:bg-[#1f2428] transition-colors">
-                <div class="flex items-center justify-between">
-                  <div>
-                    <h4 class="text-white font-medium">{post.data.title}</h4>
-                    <p class="text-[#8b949e] text-sm mt-1 line-clamp-1">{post.data.description}</p>
-                  </div>
-                  <svg class="w-5 h-5 text-[#8b949e]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
-                  </svg>
-                </div>
-              </a>
-            ))}
-          </div>
-          <a href="/blog" class="inline-flex items-center gap-2 text-white text-sm mt-6 hover:underline">
-            View all posts
-            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
-            </svg>
+        <!-- GitHub Contributions - Middle (6x2) -->
+        <div class="col-span-6 row-span-2 bg-[#141414] rounded-xl border border-[#252525] p-4 overflow-hidden hover:border-orange-500/30 transition-colors bento-card" data-index="5">
+          <GitHubContributions client:load username={GITHUB_USERNAME} />
+        </div>
+
+        <!-- Chess Card - Middle Right (2x2) -->
+        <div class="col-span-2 row-span-2 bg-[#141414] rounded-xl border border-[#252525] p-4 hover:border-orange-500/30 transition-colors bento-card" data-index="6">
+          <a href="https://worldchess.com/profile/1015724" target="_blank" class="block h-full flex flex-col">
+            <svg class="w-8 h-8 text-white mb-2" viewBox="0 0 24 24" fill="currentColor"><path d="M19 22H5v-2h14v2M17.16 8.26A8.94 8.94 0 0 0 21 2H3a8.94 8.94 0 0 0 3.84 6.26L4 12l2.5 2.5L8 20h8l1.5-5.5L20 12l-2.84-3.74z"/></svg>
+            <p class="text-white font-bold text-2xl mt-auto">1178</p>
+            <p class="text-[#8b949e] text-xs">Rapid Rating</p>
+            <p class="text-[#8b949e] text-[10px] mt-1">27 games · 7% win</p>
           </a>
         </div>
-      </div>
+
+        <!-- Decorative Pattern - Bottom Left (3x2) -->
+        <div class="col-span-3 row-span-2 bg-[#141414] rounded-xl border border-[#252525] overflow-hidden hover:border-orange-500/30 transition-colors bento-card" data-index="7">
+          <div class="h-full w-full relative">
+            <svg class="w-full h-full opacity-20" viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="0.5">
+              <circle cx="50" cy="50" r="45" class="text-[#8b949e]"/>
+              <circle cx="50" cy="50" r="35" class="text-[#8b949e]"/>
+              <circle cx="50" cy="50" r="25" class="text-[#8b949e]"/>
+              <circle cx="50" cy="50" r="15" class="text-[#8b949e]"/>
+            </svg>
+            <div class="absolute bottom-4 left-4">
+              <svg class="w-8 h-8 text-white" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+            </div>
+          </div>
         </div>
+
+        <!-- Languages Card - Bottom Center (5x2) -->
+        <div class="col-span-5 row-span-2 bg-[#141414] rounded-xl border border-[#252525] p-4 hover:border-orange-500/30 transition-colors bento-card" data-index="8">
+          <div class="space-y-3">
+            <div class="flex items-center gap-3">
+              <span class="text-[#3572A5] font-mono text-xs w-8">py</span>
+              <div class="flex-1 h-2 bg-[#252525] rounded-full overflow-hidden">
+                <div class="h-full bg-[#d4d4d4] rounded-full" style="width: 85%"></div>
+              </div>
+              <span class="text-[#8b949e] text-xs font-mono">941h</span>
+            </div>
+            <div class="flex items-center gap-3">
+              <span class="text-[#00ADD8] font-mono text-xs w-8">go</span>
+              <div class="flex-1 h-2 bg-[#252525] rounded-full overflow-hidden">
+                <div class="h-full bg-[#d4d4d4] rounded-full" style="width: 65%"></div>
+              </div>
+              <span class="text-[#8b949e] text-xs font-mono">678h</span>
+            </div>
+            <div class="flex items-center gap-3">
+              <span class="text-[#89e051] font-mono text-xs w-8">sh</span>
+              <div class="flex-1 h-2 bg-[#252525] rounded-full overflow-hidden">
+                <div class="h-full bg-[#d4d4d4] rounded-full" style="width: 45%"></div>
+              </div>
+              <span class="text-[#8b949e] text-xs font-mono">421h</span>
+            </div>
+            <div class="flex items-center gap-3">
+              <span class="text-[#555555] font-mono text-xs w-8">c</span>
+              <div class="flex-1 h-2 bg-[#252525] rounded-full overflow-hidden">
+                <div class="h-full bg-[#d4d4d4] rounded-full" style="width: 20%"></div>
+              </div>
+              <span class="text-[#8b949e] text-xs font-mono">184h</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Twitter Card - Bottom Right (2x2) -->
+        <div class="col-span-2 row-span-2 bg-[#141414] rounded-xl border border-[#252525] flex items-center justify-center hover:border-orange-500/30 transition-colors bento-card" data-index="9">
+          <a href="https://x.com/writendquit" target="_blank" class="text-white hover:text-orange-500 transition-colors">
+            <svg class="w-16 h-16" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+          </a>
+        </div>
+
       </div>
     </div>
 
     <script>
       document.addEventListener('astro:page-load', () => {
-        const tabs = document.querySelectorAll('.tab-btn');
-        const panels = document.querySelectorAll('.tab-panel');
-        
-        tabs.forEach(tab => {
-          tab.addEventListener('click', () => {
-            const targetTab = tab.getAttribute('data-tab');
-            
-            // Update tab styles
-            tabs.forEach(t => {
-              t.classList.remove('bg-foreground', 'text-background');
-              t.classList.add('text-muted-foreground');
-            });
-            tab.classList.remove('text-muted-foreground');
-            tab.classList.add('bg-foreground', 'text-background');
-            
-            // Show/hide panels
-            panels.forEach(panel => {
-              panel.classList.add('hidden');
-            });
-            document.getElementById(`panel-${targetTab}`)?.classList.remove('hidden');
-          });
+        const bentoSection = document.getElementById('bento-section');
+        const cards = document.querySelectorAll('.bento-card');
+        const indicators = document.querySelectorAll('.section-indicator');
+        const progressBar = document.getElementById('scroll-progress');
+        let currentIndex = 0;
+
+        // Scroll wheel navigation
+        bentoSection?.addEventListener('wheel', (e) => {
+          e.preventDefault();
+          if (e.deltaY > 0 && currentIndex < cards.length - 1) {
+            currentIndex++;
+          } else if (e.deltaY < 0 && currentIndex > 0) {
+            currentIndex--;
+          }
+          updateActiveCard();
         });
+
+        function updateActiveCard() {
+          // Update progress bar
+          const progress = ((currentIndex + 1) / cards.length) * 100;
+          if (progressBar) progressBar.style.width = `${progress}%`;
+
+          // Update indicators
+          indicators.forEach((ind, i) => {
+            const spans = ind.querySelectorAll('span');
+            if (i === currentIndex) {
+              ind.classList.add('active');
+              spans[0].classList.add('text-white', 'font-bold');
+              spans[0].classList.remove('text-[#8b949e]');
+              spans[1].classList.add('text-orange-500');
+              spans[1].classList.remove('text-[#8b949e]');
+            } else {
+              ind.classList.remove('active');
+              spans[0].classList.remove('text-white', 'font-bold');
+              spans[0].classList.add('text-[#8b949e]');
+              spans[1].classList.remove('text-orange-500');
+              spans[1].classList.add('text-[#8b949e]');
+            }
+          });
+
+          // Highlight active card
+          cards.forEach((card, i) => {
+            if (i === currentIndex) {
+              card.classList.add('border-orange-500/50', 'shadow-[0_0_20px_rgba(249,115,22,0.2)]');
+            } else {
+              card.classList.remove('border-orange-500/50', 'shadow-[0_0_20px_rgba(249,115,22,0.2)]');
+            }
+          });
+        }
+
+        // Initialize
+        updateActiveCard();
       });
     </script>
   </section>
