@@ -76,7 +76,7 @@ const GITHUB_USERNAME = 'writendquit'
         
         <!-- Intro -->
         <p class="text-muted-foreground text-[15px] leading-relaxed mb-4">
-          Hi, <span class="text-foreground font-medium">:wq!</span> [colonwq] is a security researcher, CTF player, 
+          Hi, <span class="text-foreground font-medium">:wq!</span> [colonwq] is a <Link href="https://x.com/writendquit" external class="text-foreground underline underline-offset-2 hover:text-orange-500 transition-colors">security researcher</Link>, <Link href="https://ctftime.org/user/233116" external class="text-foreground underline underline-offset-2 hover:text-orange-500 transition-colors">CTF player</Link>, 
           jailbreaking AI models & reverse engineering them to yield results in research, CTF, and bug bounties.
         </p>
         
@@ -86,25 +86,38 @@ const GITHUB_USERNAME = 'writendquit'
           <span class="text-foreground">binary exploitation</span> — breaking things to understand how they work.
         </p>
         
-        <!-- Status Toggle Switches - Black/White with Orange toggle -->
+        <!-- Status Toggle Switch - Clickable -->
         <div class="flex flex-wrap gap-3 mb-6">
-          <!-- Open to Work Switch -->
-          <div class="flex items-center gap-2 px-3 py-2 border border-border rounded-full bg-background">
-            <div class="relative w-10 h-5 bg-muted rounded-full">
-              <div class="absolute right-0.5 top-0.5 w-4 h-4 bg-orange-500 rounded-full shadow-[0_0_8px_rgba(249,115,22,0.6)]"></div>
+          <button id="status-toggle" class="flex items-center gap-3 px-4 py-2.5 border border-border rounded-full bg-background hover:border-orange-500/50 transition-colors cursor-pointer">
+            <div class="relative w-12 h-6 bg-muted rounded-full transition-colors">
+              <div id="toggle-dot" class="absolute top-0.5 w-5 h-5 bg-orange-500 rounded-full shadow-[0_0_10px_rgba(249,115,22,0.7)] transition-all duration-300 left-0.5"></div>
             </div>
-            <span class="text-[11px] font-medium tracking-wider text-foreground">OPEN TO WORK</span>
-          </div>
-          
-          <!-- Busy Exploitation Switch -->
-          <div class="flex items-center gap-2 px-3 py-2 border border-border rounded-full bg-background">
-            <div class="relative w-10 h-5 bg-muted rounded-full">
-              <div class="absolute left-0.5 top-0.5 w-4 h-4 bg-orange-500 rounded-full shadow-[0_0_8px_rgba(249,115,22,0.6)] animate-pulse"></div>
-            </div>
-            <span class="text-[11px] font-medium tracking-wider text-foreground">BUSY EXPLOITING</span>
-          </div>
+            <span id="status-text" class="text-[11px] font-medium tracking-wider text-foreground">OPEN TO WORK</span>
+          </button>
         </div>
       </div>
+      
+      <script>
+        document.addEventListener('astro:page-load', () => {
+          const toggle = document.getElementById('status-toggle');
+          const dot = document.getElementById('toggle-dot');
+          const text = document.getElementById('status-text');
+          let isWorking = true;
+          
+          toggle?.addEventListener('click', () => {
+            isWorking = !isWorking;
+            if (isWorking) {
+              dot?.classList.remove('right-0.5');
+              dot?.classList.add('left-0.5');
+              if (text) text.textContent = 'OPEN TO WORK';
+            } else {
+              dot?.classList.remove('left-0.5');
+              dot?.classList.add('right-0.5');
+              if (text) text.textContent = 'BUSY EXPLOITING';
+            }
+          });
+        });
+      </script>
       
       <!-- RIGHT: Animated Diagram -->
       <div class="relative hidden lg:block h-[400px]">
@@ -190,28 +203,91 @@ const GITHUB_USERNAME = 'writendquit'
         <span class="text-[11px] font-medium tracking-[0.2em] uppercase text-muted-foreground">Trusted by teams at</span>
       </div>
       
-      <!-- Scrolling logos - simple names like factory.ai -->
+      <!-- Scrolling logos with company logos -->
       <div class="relative overflow-hidden">
-        <div class="flex items-center gap-12 logo-scroll" style="width: max-content;">
-          <span class="text-lg font-medium text-muted-foreground hover:text-foreground transition-colors">Airwallex</span>
-          <span class="text-lg font-medium text-muted-foreground hover:text-foreground transition-colors">Groq</span>
-          <span class="text-lg font-medium text-muted-foreground hover:text-foreground transition-colors">Factory</span>
-          <span class="text-lg font-medium text-muted-foreground hover:text-foreground transition-colors">McLaren</span>
-          <span class="text-lg font-medium text-muted-foreground hover:text-foreground transition-colors">Anthropic</span>
-          <span class="text-lg font-medium text-muted-foreground hover:text-foreground transition-colors">Cyera</span>
-          <span class="text-lg font-medium text-muted-foreground hover:text-foreground transition-colors">Zoom</span>
-          <span class="text-lg font-medium text-muted-foreground hover:text-foreground transition-colors">Akamai</span>
-          <span class="text-lg font-medium text-muted-foreground hover:text-foreground transition-colors">Riot Games</span>
+        <div class="flex items-center gap-14 logo-scroll py-2" style="width: max-content;">
+          <!-- Airwallex -->
+          <a href="https://www.airwallex.com" target="_blank" rel="noopener" class="flex items-center gap-2 opacity-60 hover:opacity-100 transition-opacity">
+            <img src="https://www.airwallex.com/favicon.ico" alt="Airwallex" class="h-5 w-5" />
+            <span class="text-base font-medium text-foreground">Airwallex</span>
+          </a>
+          <!-- Groq -->
+          <a href="https://groq.com" target="_blank" rel="noopener" class="flex items-center gap-2 opacity-60 hover:opacity-100 transition-opacity">
+            <img src="https://groq.com/favicon.ico" alt="Groq" class="h-5 w-5" />
+            <span class="text-base font-medium text-foreground">Groq</span>
+          </a>
+          <!-- Factory -->
+          <a href="https://factory.ai" target="_blank" rel="noopener" class="flex items-center gap-2 opacity-60 hover:opacity-100 transition-opacity">
+            <img src="https://factory.ai/favicon.ico" alt="Factory" class="h-5 w-5" />
+            <span class="text-base font-medium text-foreground">Factory</span>
+          </a>
+          <!-- McLaren -->
+          <a href="https://www.mclaren.com" target="_blank" rel="noopener" class="flex items-center gap-2 opacity-60 hover:opacity-100 transition-opacity">
+            <img src="https://www.mclaren.com/favicon.ico" alt="McLaren" class="h-5 w-5" />
+            <span class="text-base font-medium text-foreground">McLaren</span>
+          </a>
+          <!-- Anthropic -->
+          <a href="https://www.anthropic.com" target="_blank" rel="noopener" class="flex items-center gap-2 opacity-60 hover:opacity-100 transition-opacity">
+            <img src="https://www.anthropic.com/favicon.ico" alt="Anthropic" class="h-5 w-5" />
+            <span class="text-base font-medium text-foreground">Anthropic</span>
+          </a>
+          <!-- Cyera -->
+          <a href="https://www.cyera.io" target="_blank" rel="noopener" class="flex items-center gap-2 opacity-60 hover:opacity-100 transition-opacity">
+            <img src="https://www.cyera.io/favicon.ico" alt="Cyera" class="h-5 w-5" />
+            <span class="text-base font-medium text-foreground">Cyera</span>
+          </a>
+          <!-- Zoom -->
+          <a href="https://zoom.us" target="_blank" rel="noopener" class="flex items-center gap-2 opacity-60 hover:opacity-100 transition-opacity">
+            <img src="https://zoom.us/favicon.ico" alt="Zoom" class="h-5 w-5" />
+            <span class="text-base font-medium text-foreground">Zoom</span>
+          </a>
+          <!-- Akamai -->
+          <a href="https://www.akamai.com" target="_blank" rel="noopener" class="flex items-center gap-2 opacity-60 hover:opacity-100 transition-opacity">
+            <img src="https://www.akamai.com/favicon.ico" alt="Akamai" class="h-5 w-5" />
+            <span class="text-base font-medium text-foreground">Akamai</span>
+          </a>
+          <!-- Riot Games -->
+          <a href="https://www.riotgames.com" target="_blank" rel="noopener" class="flex items-center gap-2 opacity-60 hover:opacity-100 transition-opacity">
+            <img src="https://www.riotgames.com/favicon.ico" alt="Riot Games" class="h-5 w-5" />
+            <span class="text-base font-medium text-foreground">Riot Games</span>
+          </a>
           <!-- Duplicate for seamless scroll -->
-          <span class="text-lg font-medium text-muted-foreground hover:text-foreground transition-colors">Airwallex</span>
-          <span class="text-lg font-medium text-muted-foreground hover:text-foreground transition-colors">Groq</span>
-          <span class="text-lg font-medium text-muted-foreground hover:text-foreground transition-colors">Factory</span>
-          <span class="text-lg font-medium text-muted-foreground hover:text-foreground transition-colors">McLaren</span>
-          <span class="text-lg font-medium text-muted-foreground hover:text-foreground transition-colors">Anthropic</span>
-          <span class="text-lg font-medium text-muted-foreground hover:text-foreground transition-colors">Cyera</span>
-          <span class="text-lg font-medium text-muted-foreground hover:text-foreground transition-colors">Zoom</span>
-          <span class="text-lg font-medium text-muted-foreground hover:text-foreground transition-colors">Akamai</span>
-          <span class="text-lg font-medium text-muted-foreground hover:text-foreground transition-colors">Riot Games</span>
+          <a href="https://www.airwallex.com" target="_blank" rel="noopener" class="flex items-center gap-2 opacity-60 hover:opacity-100 transition-opacity">
+            <img src="https://www.airwallex.com/favicon.ico" alt="Airwallex" class="h-5 w-5" />
+            <span class="text-base font-medium text-foreground">Airwallex</span>
+          </a>
+          <a href="https://groq.com" target="_blank" rel="noopener" class="flex items-center gap-2 opacity-60 hover:opacity-100 transition-opacity">
+            <img src="https://groq.com/favicon.ico" alt="Groq" class="h-5 w-5" />
+            <span class="text-base font-medium text-foreground">Groq</span>
+          </a>
+          <a href="https://factory.ai" target="_blank" rel="noopener" class="flex items-center gap-2 opacity-60 hover:opacity-100 transition-opacity">
+            <img src="https://factory.ai/favicon.ico" alt="Factory" class="h-5 w-5" />
+            <span class="text-base font-medium text-foreground">Factory</span>
+          </a>
+          <a href="https://www.mclaren.com" target="_blank" rel="noopener" class="flex items-center gap-2 opacity-60 hover:opacity-100 transition-opacity">
+            <img src="https://www.mclaren.com/favicon.ico" alt="McLaren" class="h-5 w-5" />
+            <span class="text-base font-medium text-foreground">McLaren</span>
+          </a>
+          <a href="https://www.anthropic.com" target="_blank" rel="noopener" class="flex items-center gap-2 opacity-60 hover:opacity-100 transition-opacity">
+            <img src="https://www.anthropic.com/favicon.ico" alt="Anthropic" class="h-5 w-5" />
+            <span class="text-base font-medium text-foreground">Anthropic</span>
+          </a>
+          <a href="https://www.cyera.io" target="_blank" rel="noopener" class="flex items-center gap-2 opacity-60 hover:opacity-100 transition-opacity">
+            <img src="https://www.cyera.io/favicon.ico" alt="Cyera" class="h-5 w-5" />
+            <span class="text-base font-medium text-foreground">Cyera</span>
+          </a>
+          <a href="https://zoom.us" target="_blank" rel="noopener" class="flex items-center gap-2 opacity-60 hover:opacity-100 transition-opacity">
+            <img src="https://zoom.us/favicon.ico" alt="Zoom" class="h-5 w-5" />
+            <span class="text-base font-medium text-foreground">Zoom</span>
+          </a>
+          <a href="https://www.akamai.com" target="_blank" rel="noopener" class="flex items-center gap-2 opacity-60 hover:opacity-100 transition-opacity">
+            <img src="https://www.akamai.com/favicon.ico" alt="Akamai" class="h-5 w-5" />
+            <span class="text-base font-medium text-foreground">Akamai</span>
+          </a>
+          <a href="https://www.riotgames.com" target="_blank" rel="noopener" class="flex items-center gap-2 opacity-60 hover:opacity-100 transition-opacity">
+            <img src="https://www.riotgames.com/favicon.ico" alt="Riot Games" class="h-5 w-5" />
+            <span class="text-base font-medium text-foreground">Riot Games</span>
+          </a>
         </div>
       </div>
     </div>
