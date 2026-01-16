@@ -294,140 +294,211 @@ const GITHUB_USERNAME = 'writendquit'
   </section>
 
   <!-- ===== BENTO GRID SECTION ===== -->
-  <section id="bento-section" class="bg-[#0a0a0a] min-h-screen relative">
-    <div class="flex">
+  <!-- ===== BENTO GRID - FULL PAGE ===== -->
+  <section id="bento-section" class="bg-[#0a0a0a] pb-4">
+    <div class="max-w-[1800px] mx-auto px-4">
       <!-- MAIN BENTO GRID -->
-      <div class="flex-1 p-4 grid grid-cols-12 grid-rows-6 gap-3 min-h-screen">
+      <div class="grid grid-cols-12 auto-rows-[120px] gap-3">
         
-        <!-- Discord Card - Top Left (3x2) -->
-        <div class="col-span-3 row-span-2 bg-[#141414] rounded-xl border border-[#252525] p-4 flex flex-col hover:border-orange-500/30 transition-colors bento-card" data-index="0">
-          <div class="flex items-center gap-2 mb-3">
-            <img src="/discord-profile.png" alt="Discord" class="w-12 h-12 rounded-full grayscale hover:grayscale-0 transition-all" />
-            <span class="text-[#8b949e] text-xs">●●●●●●</span>
+        <!-- ROW 1 -->
+        <!-- Discord Card (3x2) -->
+        <div class="col-span-3 row-span-2 bg-[#141414] rounded-xl border border-[#252525] p-5 flex flex-col hover:border-orange-500/30 transition-all duration-300 group">
+          <div class="flex items-center gap-3 mb-3">
+            <img src="/discord-profile.png" alt="Discord" class="w-14 h-14 rounded-full grayscale group-hover:grayscale-0 transition-all duration-300" />
+            <div class="flex gap-1">
+              <span class="w-2 h-2 bg-[#5865F2] rounded-full"></span>
+              <span class="w-2 h-2 bg-[#3a3a3a] rounded-full"></span>
+              <span class="w-2 h-2 bg-[#3a3a3a] rounded-full"></span>
+            </div>
           </div>
           <div class="mt-auto">
-            <p class="text-white font-semibold">writendquit</p>
-            <p class="text-[#8b949e] text-xs">@writendquit</p>
-            <div class="mt-2 bg-[#5865F2]/20 rounded px-2 py-1 text-xs text-[#5865F2] inline-block">
-              No status
+            <p class="text-white font-semibold text-lg">writendquit</p>
+            <p class="text-[#8b949e] text-sm">@writendquit</p>
+            <div class="mt-3 bg-[#5865F2]/20 rounded px-3 py-1.5 text-xs text-[#5865F2] inline-block">
+              Playing CTF
             </div>
-            <p class="text-[#8b949e] text-[10px] mt-1">I'm probably sleeping...<br/>Enjoy your stay!<br/>>:00 elapsed</p>
           </div>
         </div>
 
-        <!-- Featured Blog Post - Top Center (5x2) -->
-        <div class="col-span-5 row-span-2 bg-[#141414] rounded-xl border border-[#252525] overflow-hidden hover:border-orange-500/30 transition-colors bento-card" data-index="1">
+        <!-- Featured Blog (5x2) -->
+        <div class="col-span-5 row-span-2 bg-[#141414] rounded-xl border border-[#252525] overflow-hidden hover:border-orange-500/30 transition-all duration-300 group relative">
+          <div class="absolute inset-0 bg-gradient-to-br from-orange-500/5 to-transparent"></div>
           {blog[0] && (
-            <a href={`/blog/${blog[0].id}`} class="block h-full relative group">
-              <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent z-10"></div>
-              <div class="absolute top-4 right-4 z-20">
-                <span class="text-white/60 text-2xl">✦</span>
-              </div>
-              <div class="absolute bottom-4 left-4 right-4 z-20">
-                <p class="text-white font-bold text-lg">{blog[0].data.title}</p>
-                <p class="text-[#8b949e] text-xs mt-1">{blog[0].data.description}</p>
-              </div>
-              <div class="absolute bottom-4 right-4 z-20 opacity-0 group-hover:opacity-100 transition-opacity">
-                <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
-                </svg>
-              </div>
+            <a href={`/blog/${blog[0].id}`} class="block h-full p-5 flex flex-col justify-end relative z-10">
+              <span class="absolute top-4 right-4 text-orange-500/40 text-3xl">✦</span>
+              <span class="text-[10px] uppercase tracking-widest text-orange-500 mb-2">Latest Post</span>
+              <p class="text-white font-bold text-xl leading-tight">{blog[0].data.title}</p>
+              <p class="text-[#8b949e] text-sm mt-2 line-clamp-2">{blog[0].data.description}</p>
             </a>
           )}
         </div>
 
-        <!-- Logo Card - Top Right (2x1) -->
-        <div class="col-span-2 row-span-1 bg-[#141414] rounded-xl border border-[#252525] flex items-center justify-center hover:border-orange-500/30 transition-colors bento-card" data-index="2">
-          <span class="text-white text-4xl font-bold">:wq!</span>
+        <!-- Logo Card (2x1) -->
+        <div class="col-span-2 row-span-1 bg-[#141414] rounded-xl border border-[#252525] flex items-center justify-center hover:border-orange-500/30 transition-all duration-300">
+          <span class="text-white text-3xl font-bold tracking-tight">:wq!</span>
         </div>
 
-        <!-- Nav Card - Below Logo (2x1) -->
-        <div class="col-span-2 row-span-1 bg-[#141414] rounded-xl border border-[#252525] flex items-center justify-center gap-4 text-[#8b949e] text-xs hover:border-orange-500/30 transition-colors bento-card" data-index="3">
+        <!-- Scroll Toolbar (2x8) -->
+        <div class="col-span-2 row-span-8 bg-[#141414] rounded-xl border border-[#252525] p-4 flex flex-col">
+          <div class="h-1 bg-[#252525] rounded-full mb-8 overflow-hidden">
+            <div id="scroll-progress" class="h-full bg-gradient-to-r from-[#8b949e] to-orange-500 rounded-full transition-all duration-500" style="width: 15%"></div>
+          </div>
+          <div class="space-y-4 font-mono text-[11px]">
+            <button class="section-btn flex items-center gap-3 w-full text-left hover:translate-x-1 transition-transform" data-section="0">
+              <span class="text-white font-bold">01</span>
+              <span class="text-orange-500 uppercase tracking-wider">Discord</span>
+            </button>
+            <button class="section-btn flex items-center gap-3 w-full text-left hover:translate-x-1 transition-transform" data-section="1">
+              <span class="text-[#555]">02</span>
+              <span class="text-[#555] uppercase tracking-wider">Blog</span>
+            </button>
+            <button class="section-btn flex items-center gap-3 w-full text-left hover:translate-x-1 transition-transform" data-section="2">
+              <span class="text-[#555]">03</span>
+              <span class="text-[#555] uppercase tracking-wider">GitHub</span>
+            </button>
+            <button class="section-btn flex items-center gap-3 w-full text-left hover:translate-x-1 transition-transform" data-section="3">
+              <span class="text-[#555]">04</span>
+              <span class="text-[#555] uppercase tracking-wider">Chess</span>
+            </button>
+            <button class="section-btn flex items-center gap-3 w-full text-left hover:translate-x-1 transition-transform" data-section="4">
+              <span class="text-[#555]">05</span>
+              <span class="text-[#555] uppercase tracking-wider">Languages</span>
+            </button>
+            <button class="section-btn flex items-center gap-3 w-full text-left hover:translate-x-1 transition-transform" data-section="5">
+              <span class="text-[#555]">06</span>
+              <span class="text-[#555] uppercase tracking-wider">CTF</span>
+            </button>
+            <button class="section-btn flex items-center gap-3 w-full text-left hover:translate-x-1 transition-transform" data-section="6">
+              <span class="text-[#555]">07</span>
+              <span class="text-[#555] uppercase tracking-wider">Contact</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Nav Links (2x1) -->
+        <div class="col-span-2 row-span-1 bg-[#141414] rounded-xl border border-[#252525] flex items-center justify-center gap-5 text-[#8b949e] text-xs hover:border-orange-500/30 transition-all duration-300">
           <a href="/" class="hover:text-white transition-colors">Home</a>
           <a href="/blog" class="hover:text-white transition-colors">Blog</a>
           <a href="/about" class="hover:text-white transition-colors">About</a>
         </div>
 
-        <!-- Scroll Indicator - Far Right (2x6) -->
-        <div class="col-span-2 row-span-6 bg-[#141414] rounded-xl border border-[#252525] p-4 flex flex-col">
-          <div class="flex-1 flex flex-col justify-center">
-            <!-- Scroll Progress Bar -->
-            <div class="h-1 bg-[#252525] rounded-full mb-6 overflow-hidden">
-              <div id="scroll-progress" class="h-full bg-gradient-to-r from-[#8b949e] to-orange-500 rounded-full transition-all duration-300" style="width: 20%"></div>
-            </div>
-            <!-- Section List -->
-            <div class="space-y-3 font-mono text-xs">
-              <button class="flex items-center gap-2 section-btn w-full text-left hover:text-orange-400 transition-colors" data-section="0">
-                <span class="text-white font-bold">01</span>
-                <span class="text-orange-500">DISCORD</span>
-              </button>
-              <button class="flex items-center gap-2 section-btn w-full text-left hover:text-orange-400 transition-colors" data-section="1">
-                <span class="text-[#8b949e]">02</span>
-                <span class="text-[#8b949e]">BLOG</span>
-              </button>
-              <button class="flex items-center gap-2 section-btn w-full text-left hover:text-orange-400 transition-colors" data-section="2">
-                <span class="text-[#8b949e]">03</span>
-                <span class="text-[#8b949e]">GITHUB</span>
-              </button>
-              <button class="flex items-center gap-2 section-btn w-full text-left hover:text-orange-400 transition-colors" data-section="3">
-                <span class="text-[#8b949e]">04</span>
-                <span class="text-[#8b949e]">CHESS</span>
-              </button>
-              <button class="flex items-center gap-2 section-btn w-full text-left hover:text-orange-400 transition-colors" data-section="4">
-                <span class="text-[#8b949e]">05</span>
-                <span class="text-[#8b949e]">LANGUAGES</span>
-              </button>
-            </div>
-          </div>
-        </div>
-
-        <!-- GitHub Contributions - Middle (6x2) -->
-        <div class="col-span-6 row-span-2 bg-[#141414] rounded-xl border border-[#252525] p-4 overflow-hidden hover:border-orange-500/30 transition-colors bento-card" data-index="4">
+        <!-- ROW 2-3: GitHub Contributions (6x2) -->
+        <div class="col-span-6 row-span-2 bg-[#141414] rounded-xl border border-[#252525] p-4 overflow-hidden hover:border-orange-500/30 transition-all duration-300">
           <GitHubContributions client:load username={GITHUB_USERNAME} />
         </div>
 
-        <!-- Chess Card - Middle Right (2x2) -->
-        <div class="col-span-2 row-span-2 bg-[#141414] rounded-xl border border-[#252525] p-4 hover:border-orange-500/30 transition-colors bento-card" data-index="5">
+        <!-- Chess Card (2x2) -->
+        <div class="col-span-2 row-span-2 bg-[#141414] rounded-xl border border-[#252525] p-5 hover:border-orange-500/30 transition-all duration-300 group">
           <a href="https://worldchess.com/profile/1015724" target="_blank" class="block h-full flex flex-col">
-            <svg class="w-8 h-8 text-white mb-2" viewBox="0 0 24 24" fill="currentColor"><path d="M19 22H5v-2h14v2M17.16 8.26A8.94 8.94 0 0 0 21 2H3a8.94 8.94 0 0 0 3.84 6.26L4 12l2.5 2.5L8 20h8l1.5-5.5L20 12l-2.84-3.74z"/></svg>
-            <p class="text-white font-bold text-2xl mt-auto">1178</p>
-            <p class="text-[#8b949e] text-xs">Rapid Rating</p>
-            <p class="text-[#8b949e] text-[10px] mt-1">27 games · 7% win</p>
+            <svg class="w-10 h-10 text-[#8b949e] group-hover:text-white transition-colors" viewBox="0 0 24 24" fill="currentColor"><path d="M19 22H5v-2h14v2M17.16 8.26A8.94 8.94 0 0 0 21 2H3a8.94 8.94 0 0 0 3.84 6.26L4 12l2.5 2.5L8 20h8l1.5-5.5L20 12l-2.84-3.74z"/></svg>
+            <p class="text-white font-bold text-3xl mt-auto">1178</p>
+            <p class="text-[#8b949e] text-sm">Rapid Rating</p>
+            <p class="text-[#555] text-xs mt-1">27 games · 7% win</p>
           </a>
         </div>
 
-        <!-- Languages Card - Bottom (8x2) -->
-        <div class="col-span-8 row-span-2 bg-[#141414] rounded-xl border border-[#252525] p-4 hover:border-orange-500/30 transition-colors bento-card" data-index="6">
+        <!-- ROW 4-5: Languages Card (4x2) -->
+        <div class="col-span-4 row-span-2 bg-[#141414] rounded-xl border border-[#252525] p-5 hover:border-orange-500/30 transition-all duration-300">
+          <p class="text-[#555] text-[10px] uppercase tracking-widest mb-4">Languages</p>
           <div class="space-y-3">
-            <div class="flex items-center gap-3">
-              <span class="text-[#3572A5] font-mono text-xs w-8">py</span>
+            <div class="flex items-center gap-3 group/item">
+              <span class="text-[#3572A5] font-mono text-xs w-6">py</span>
               <div class="flex-1 h-2 bg-[#252525] rounded-full overflow-hidden">
-                <div class="h-full bg-[#d4d4d4] rounded-full" style="width: 85%"></div>
+                <div class="h-full bg-[#8b949e] group-hover/item:bg-orange-500 rounded-full transition-colors" style="width: 85%"></div>
               </div>
-              <span class="text-[#8b949e] text-xs font-mono">941h</span>
             </div>
-            <div class="flex items-center gap-3">
-              <span class="text-[#00ADD8] font-mono text-xs w-8">go</span>
+            <div class="flex items-center gap-3 group/item">
+              <span class="text-[#00ADD8] font-mono text-xs w-6">go</span>
               <div class="flex-1 h-2 bg-[#252525] rounded-full overflow-hidden">
-                <div class="h-full bg-[#d4d4d4] rounded-full" style="width: 65%"></div>
+                <div class="h-full bg-[#8b949e] group-hover/item:bg-orange-500 rounded-full transition-colors" style="width: 65%"></div>
               </div>
-              <span class="text-[#8b949e] text-xs font-mono">678h</span>
             </div>
-            <div class="flex items-center gap-3">
-              <span class="text-[#89e051] font-mono text-xs w-8">sh</span>
+            <div class="flex items-center gap-3 group/item">
+              <span class="text-[#89e051] font-mono text-xs w-6">sh</span>
               <div class="flex-1 h-2 bg-[#252525] rounded-full overflow-hidden">
-                <div class="h-full bg-[#d4d4d4] rounded-full" style="width: 45%"></div>
+                <div class="h-full bg-[#8b949e] group-hover/item:bg-orange-500 rounded-full transition-colors" style="width: 45%"></div>
               </div>
-              <span class="text-[#8b949e] text-xs font-mono">421h</span>
             </div>
-            <div class="flex items-center gap-3">
-              <span class="text-[#555555] font-mono text-xs w-8">c</span>
+            <div class="flex items-center gap-3 group/item">
+              <span class="text-[#555555] font-mono text-xs w-6">c</span>
               <div class="flex-1 h-2 bg-[#252525] rounded-full overflow-hidden">
-                <div class="h-full bg-[#d4d4d4] rounded-full" style="width: 20%"></div>
+                <div class="h-full bg-[#8b949e] group-hover/item:bg-orange-500 rounded-full transition-colors" style="width: 20%"></div>
               </div>
-              <span class="text-[#8b949e] text-xs font-mono">184h</span>
             </div>
           </div>
+        </div>
+
+        <!-- CTFtime Card (2x2) -->
+        <div class="col-span-2 row-span-2 bg-[#141414] rounded-xl border border-[#252525] p-5 hover:border-orange-500/30 transition-all duration-300 group">
+          <a href="https://ctftime.org/user/233116" target="_blank" class="block h-full flex flex-col">
+            <div class="w-10 h-10 bg-[#d93025]/20 rounded-lg flex items-center justify-center mb-auto">
+              <span class="text-[#d93025] font-bold text-lg">CTF</span>
+            </div>
+            <p class="text-white font-bold text-xl">CTFtime</p>
+            <p class="text-[#8b949e] text-sm">Team :wq!</p>
+            <p class="text-[#555] text-xs mt-1">View profile →</p>
+          </a>
+        </div>
+
+        <!-- HTB Card (2x2) -->
+        <div class="col-span-2 row-span-2 bg-[#141414] rounded-xl border border-[#252525] p-5 hover:border-orange-500/30 transition-all duration-300 group">
+          <a href="https://app.hackthebox.com" target="_blank" class="block h-full flex flex-col">
+            <div class="w-10 h-10 bg-[#9fef00]/20 rounded-lg flex items-center justify-center mb-auto">
+              <span class="text-[#9fef00] font-bold text-sm">HTB</span>
+            </div>
+            <p class="text-white font-bold text-xl">HackTheBox</p>
+            <p class="text-[#8b949e] text-sm">Active Player</p>
+            <p class="text-[#555] text-xs mt-1">View profile →</p>
+          </a>
+        </div>
+
+        <!-- ROW 6-7: Blog Posts Grid (4x2) -->
+        <div class="col-span-4 row-span-2 bg-[#141414] rounded-xl border border-[#252525] p-5 hover:border-orange-500/30 transition-all duration-300">
+          <p class="text-[#555] text-[10px] uppercase tracking-widest mb-4">Recent Writeups</p>
+          <div class="space-y-3">
+            {blog.slice(0, 3).map((post, i) => (
+              <a href={`/blog/${post.id}`} class="block group/post">
+                <div class="flex items-center gap-3">
+                  <span class="text-[#555] font-mono text-xs">0{i + 1}</span>
+                  <p class="text-[#8b949e] text-sm group-hover/post:text-white transition-colors truncate">{post.data.title}</p>
+                </div>
+              </a>
+            ))}
+          </div>
+          <a href="/blog" class="text-orange-500 text-xs mt-4 inline-block hover:underline">View all →</a>
+        </div>
+
+        <!-- Profile Picture Card (2x2) -->
+        <div class="col-span-2 row-span-2 bg-[#141414] rounded-xl border border-[#252525] overflow-hidden hover:border-orange-500/30 transition-all duration-300 group">
+          <img src="/writendquit.jpg" alt="Profile" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500" />
+        </div>
+
+        <!-- Contact Card (2x2) -->
+        <div class="col-span-2 row-span-2 bg-[#141414] rounded-xl border border-[#252525] p-5 hover:border-orange-500/30 transition-all duration-300 flex flex-col justify-center items-center text-center">
+          <p class="text-[#555] text-[10px] uppercase tracking-widest mb-2">Get in touch</p>
+          <p class="text-white font-bold text-lg mb-3">Let's Connect</p>
+          <a href="mailto:contact@wq.dev" class="px-4 py-2 bg-orange-500 text-white text-xs font-medium rounded hover:bg-orange-600 transition-colors">
+            Contact Me
+          </a>
+        </div>
+
+        <!-- ROW 8: Quote Card (6x1) -->
+        <div class="col-span-6 row-span-1 bg-[#141414] rounded-xl border border-[#252525] p-5 hover:border-orange-500/30 transition-all duration-300 flex items-center">
+          <p class="text-[#8b949e] text-sm italic">"Security is not a product, but a process."</p>
+          <span class="text-[#555] text-xs ml-auto">— Bruce Schneier</span>
+        </div>
+
+        <!-- Social Links (2x1) -->
+        <div class="col-span-2 row-span-1 bg-[#141414] rounded-xl border border-[#252525] flex items-center justify-center gap-4 hover:border-orange-500/30 transition-all duration-300">
+          <a href="https://github.com/writendquit" target="_blank" class="text-[#8b949e] hover:text-white transition-colors">
+            <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+          </a>
+          <a href="https://x.com/writendquit" target="_blank" class="text-[#8b949e] hover:text-white transition-colors">
+            <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+          </a>
+          <a href="https://ctftime.org/user/233116" target="_blank" class="text-[#8b949e] hover:text-white transition-colors">
+            <span class="text-xs font-bold">CTF</span>
+          </a>
         </div>
 
       </div>
@@ -435,185 +506,39 @@ const GITHUB_USERNAME = 'writendquit'
 
     <script>
       document.addEventListener('astro:page-load', () => {
-        const bentoSection = document.getElementById('bento-section');
         const sectionBtns = document.querySelectorAll('.section-btn');
         const progressBar = document.getElementById('scroll-progress');
-        const cards = document.querySelectorAll('.bento-card');
         let currentIndex = 0;
-        const totalSections = 5;
+        const totalSections = 7;
 
-        // Card to section mapping (data-index values)
-        const sectionCards = [
-          [0], // Discord
-          [1], // Blog
-          [2, 3, 4], // Logo + Nav + GitHub
-          [5], // Chess
-          [6]  // Languages
-        ];
-
-        function updateSection(index) {
+        function updateSection(index: number) {
           currentIndex = index;
           const progress = ((index + 1) / totalSections) * 100;
           if (progressBar) progressBar.style.width = `${progress}%`;
 
-          // Update buttons
           sectionBtns.forEach((btn, i) => {
             const spans = btn.querySelectorAll('span');
             if (i === index) {
               spans[0].classList.add('text-white', 'font-bold');
-              spans[0].classList.remove('text-[#8b949e]');
+              spans[0].classList.remove('text-[#555]');
               spans[1].classList.add('text-orange-500');
-              spans[1].classList.remove('text-[#8b949e]');
+              spans[1].classList.remove('text-[#555]');
             } else {
               spans[0].classList.remove('text-white', 'font-bold');
-              spans[0].classList.add('text-[#8b949e]');
+              spans[0].classList.add('text-[#555]');
               spans[1].classList.remove('text-orange-500');
-              spans[1].classList.add('text-[#8b949e]');
-            }
-          });
-
-          // Highlight relevant cards
-          cards.forEach((card, i) => {
-            if (sectionCards[index]?.includes(i)) {
-              card.classList.add('border-orange-500/50', 'shadow-[0_0_20px_rgba(249,115,22,0.2)]');
-            } else {
-              card.classList.remove('border-orange-500/50', 'shadow-[0_0_20px_rgba(249,115,22,0.2)]');
+              spans[1].classList.add('text-[#555]');
             }
           });
         }
 
-        // Click navigation
         sectionBtns.forEach((btn, i) => {
           btn.addEventListener('click', () => updateSection(i));
         });
 
-        // Scroll wheel navigation
-        let scrollTimeout: ReturnType<typeof setTimeout>;
-        bentoSection?.addEventListener('wheel', (e) => {
-          e.preventDefault();
-          clearTimeout(scrollTimeout);
-          scrollTimeout = setTimeout(() => {
-            if (e.deltaY > 0 && currentIndex < totalSections - 1) {
-              updateSection(currentIndex + 1);
-            } else if (e.deltaY < 0 && currentIndex > 0) {
-              updateSection(currentIndex - 1);
-            }
-          }, 50);
-        }, { passive: false });
-
-        // Initialize
         updateSection(0);
       });
     </script>
-  </section>
-
-  <!-- ===== ENTERPRISE SECTION (DARK) ===== -->
-  <section class="bg-[#0a0a0a] text-white py-24">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="flex items-center gap-2 mb-6">
-        <div class="w-1.5 h-1.5 bg-orange-500 rounded-full orange-dot"></div>
-        <span class="text-[11px] font-medium tracking-[0.2em] uppercase text-white/50">Enterprise</span>
-      </div>
-      
-      <p class="text-white/60 text-[15px] leading-relaxed mb-16 max-w-md">
-        :wq! is designed to meet the demands of modern security teams — 
-        secure, scalable, and ready to integrate with your existing security tools.
-      </p>
-      
-      <!-- Big headline -->
-      <h2 class="text-[2.5rem] sm:text-[3rem] lg:text-[3.5rem] font-bold leading-[1.08] tracking-[-0.02em] mb-20">
-        Security that works with<br/>
-        <span class="text-white/30">you, not replace you</span>
-      </h2>
-      
-      <!-- Two column info -->
-      <div class="grid md:grid-cols-2 gap-12 lg:gap-20">
-        <div>
-          <div class="text-[11px] font-medium tracking-[0.15em] uppercase text-white/30 mb-4">Secure at every level</div>
-          <h3 class="text-xl font-bold mb-4">Industry-grade security and compliance</h3>
-          <p class="text-white/50 text-[15px] leading-relaxed mb-6">
-            Uses state-of-the-art security protocols to protect your data and IP from misuse.
-          </p>
-          <Link href="/about" class="inline-flex items-center gap-2 text-[13px] text-white/50 hover:text-white transition-colors tracking-wider uppercase">
-            Learn more about security
-            <Icon name="lucide:arrow-right" class="w-3 h-3" />
-          </Link>
-        </div>
-        
-        <div>
-          <div class="text-[11px] font-medium tracking-[0.15em] uppercase text-white/30 mb-4">Across your stack</div>
-          <h3 class="text-xl font-bold mb-4">Interface and vendor agnostic</h3>
-          <p class="text-white/50 text-[15px] leading-relaxed mb-6">
-            Flexible and extensible, working with any model provider, any tooling, and on any interface.
-          </p>
-          <Link href="/about" class="inline-flex items-center gap-2 text-[13px] text-white/50 hover:text-white transition-colors tracking-wider uppercase">
-            Learn more about enterprise
-            <Icon name="lucide:arrow-right" class="w-3 h-3" />
-          </Link>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== NEWS SECTION ===== -->
-  <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
-    <div class="flex items-center gap-2 mb-4">
-      <div class="w-1.5 h-1.5 bg-orange-500 rounded-full orange-dot"></div>
-      <span class="text-[11px] font-medium tracking-[0.2em] uppercase text-muted-foreground">News</span>
-    </div>
-    
-    <div class="flex items-center justify-between mb-12">
-      <h2 class="text-[2rem] sm:text-[2.5rem] font-bold">News & updates</h2>
-      <Link href="/blog" class="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors">
-        More News
-        <Icon name="lucide:arrow-right" class="w-4 h-4" />
-      </Link>
-    </div>
-    
-    <div class="grid md:grid-cols-2 gap-8 lg:gap-12">
-      {blog.map((post, i) => (
-        <article class="group">
-          <div class="flex items-center gap-2 mb-4">
-            <span class="text-[11px] px-2 py-0.5 border border-border rounded font-medium tracking-wider uppercase">Writeup</span>
-            {i === 0 && <span class="text-[11px] px-2 py-0.5 bg-orange-500 text-white rounded font-medium">NEW</span>}
-          </div>
-          
-          <h3 class="text-xl font-bold mb-3 group-hover:text-muted-foreground transition-colors">
-            <Link href={`/blog/${post.id}`}>{post.data.title}</Link>
-          </h3>
-          
-          <p class="text-muted-foreground text-[15px] leading-relaxed line-clamp-3 mb-4">
-            {post.data.description}
-          </p>
-          
-          <Link href={`/blog/${post.id}`} class="inline-flex items-center gap-2 text-sm font-medium group-hover:gap-3 transition-all">
-            Learn more
-            <Icon name="lucide:arrow-right" class="w-4 h-4" />
-          </Link>
-        </article>
-      ))}
-    </div>
-  </section>
-
-  <!-- ===== CTA SECTION ===== -->
-  <section class="bg-foreground text-background">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-      <div class="flex items-center gap-2 mb-4">
-        <div class="w-1.5 h-1.5 bg-orange-500 rounded-full orange-dot"></div>
-        <span class="text-[11px] font-medium tracking-[0.2em] uppercase text-background/50">Build with us</span>
-      </div>
-      
-      <div class="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-8">
-        <h2 class="text-[2rem] sm:text-[2.5rem] font-bold leading-tight">
-          Ready to build the<br/>security of the future?
-        </h2>
-        
-        <Link href="mailto:contact@wq.dev" class="inline-flex items-center gap-2 px-6 py-3 bg-background text-foreground text-sm font-medium rounded hover:opacity-90 transition-opacity">
-          Start building
-          <Icon name="lucide:arrow-right" class="w-4 h-4" />
-        </Link>
-      </div>
-    </div>
   </section>
 
   <!-- ===== FOOTER ===== -->
